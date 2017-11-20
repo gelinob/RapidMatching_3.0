@@ -14,6 +14,7 @@ Public Class frmMatching2Opt
     Public CODCount As Integer
     Public missCountA As Integer
     Public missCountB As Integer
+    Public schedCount As Integer
 
     Public intCondition As Integer
 
@@ -63,8 +64,8 @@ Public Class frmMatching2Opt
 
         ' Call random number generation functions (below).
         randCondition()
-        randNumbA()
-        randNumbB()
+        checkA()
+        checkB()
 
     End Sub
 
@@ -85,15 +86,15 @@ Public Class frmMatching2Opt
         ' If the random condition timer is beyond the random value threshold, pick new random condition and reset schedule values.
         If intConditionTime >= intRandCond Then
             intCondition = CInt(Math.Floor(3 * Rnd())) + 1
-            intCondition = Int(Rnd() * 3) + 1
-            randNumbA()
-            randNumbB()
+            checkA()
+            checkB()
             intConditionTime = 0
+            schedCount += 1
             randCondition()
         End If
     End Sub
 
-    Private Sub randNumbA()
+    Private Sub checkA()
         If intCondition = 1 Then
             'Generate a random schedule value within parameters for condition.
             intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
@@ -104,7 +105,7 @@ Public Class frmMatching2Opt
         End If
     End Sub
 
-    Private Sub randNumbB()
+    Private Sub checkB()
         If intCondition = 1 Then
             intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
         ElseIf intCondition = 2 Then
@@ -184,7 +185,7 @@ Public Class frmMatching2Opt
             Else
                 ' If the progress bar was NOT at the specified theshold...
                 ' Set a new schedule value for the button.
-                randNumbA()
+                checkA()
                 ' Reset the button's timer.
                 TimeA = 0
             End If
@@ -200,7 +201,7 @@ Public Class frmMatching2Opt
                 MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                 tmr2OptMain.Enabled = False
             Else
-                randNumbB()
+                checkB()
                 TimeB = 0
             End If
         End If
@@ -221,8 +222,8 @@ Public Class frmMatching2Opt
 
     Private Sub picBPosition()
         If TimePicB >= intRandPicB Then
-            Dim OptBx As Integer = Math.Floor((grpOptB2Opt.Width - 2) * Rnd())
-            Dim OptBy As Integer = Math.Floor((grpOptB2Opt.Height - 2) * Rnd())
+            Dim OptBx As Integer = Math.Floor((grpOptB2Opt.Width - picOptA2Opt.Width) * Rnd())
+            Dim OptBy As Integer = Math.Floor((grpOptB2Opt.Height - picOptB2Opt.Height) * Rnd())
 
             picOptB2Opt.Left = OptBx
             picOptB2Opt.Top = OptBy

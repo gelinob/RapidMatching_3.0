@@ -24,6 +24,8 @@ Partial Class frmOpt2Log
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.grpOptA2Opt = New System.Windows.Forms.GroupBox()
+        Me.txtMissOptA2Opt = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.txtTimeOptA2Opt = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -35,6 +37,8 @@ Partial Class frmOpt2Log
         Me.txtSchedOptA2Opt = New System.Windows.Forms.TextBox()
         Me.lblSchedOptA2Opt = New System.Windows.Forms.Label()
         Me.grpOptB2Opt = New System.Windows.Forms.GroupBox()
+        Me.txtMissOptB2Opt = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.txtTimeOptB2Opt = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -54,10 +58,6 @@ Partial Class frmOpt2Log
         Me.txtCODClicks2Opt = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtTotalClicks2Opt = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.txtMissOptA2Opt = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.txtMissOptB2Opt = New System.Windows.Forms.TextBox()
         Me.grpOptA2Opt.SuspendLayout()
         Me.grpOptB2Opt.SuspendLayout()
         Me.SuspendLayout()
@@ -83,12 +83,29 @@ Partial Class frmOpt2Log
         Me.grpOptA2Opt.TabStop = False
         Me.grpOptA2Opt.Text = "Option A"
         '
+        'txtMissOptA2Opt
+        '
+        Me.txtMissOptA2Opt.Location = New System.Drawing.Point(226, 43)
+        Me.txtMissOptA2Opt.Name = "txtMissOptA2Opt"
+        Me.txtMissOptA2Opt.Size = New System.Drawing.Size(32, 20)
+        Me.txtMissOptA2Opt.TabIndex = 7
+        Me.txtMissOptA2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(136, 69)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(80, 13)
+        Me.Label9.TabIndex = 10
+        Me.Label9.Text = "Time Allocated:"
+        '
         'txtTimeOptA2Opt
         '
         Me.txtTimeOptA2Opt.Location = New System.Drawing.Point(226, 66)
         Me.txtTimeOptA2Opt.Name = "txtTimeOptA2Opt"
         Me.txtTimeOptA2Opt.Size = New System.Drawing.Size(32, 20)
-        Me.txtTimeOptA2Opt.TabIndex = 9
+        Me.txtTimeOptA2Opt.TabIndex = 11
         Me.txtTimeOptA2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label7
@@ -97,7 +114,7 @@ Partial Class frmOpt2Log
         Me.Label7.Location = New System.Drawing.Point(136, 44)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(64, 13)
-        Me.Label7.TabIndex = 8
+        Me.Label7.TabIndex = 6
         Me.Label7.Text = "# of Misses:"
         '
         'Label1
@@ -106,7 +123,7 @@ Partial Class frmOpt2Log
         Me.Label1.Location = New System.Drawing.Point(6, 77)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(114, 13)
-        Me.Label1.TabIndex = 7
+        Me.Label1.TabIndex = 8
         Me.Label1.Text = "Time of R+ Delivery (s)"
         '
         'txtTimerOptA2Opt
@@ -114,7 +131,7 @@ Partial Class frmOpt2Log
         Me.txtTimerOptA2Opt.Location = New System.Drawing.Point(98, 43)
         Me.txtTimerOptA2Opt.Name = "txtTimerOptA2Opt"
         Me.txtTimerOptA2Opt.Size = New System.Drawing.Size(30, 20)
-        Me.txtTimerOptA2Opt.TabIndex = 6
+        Me.txtTimerOptA2Opt.TabIndex = 5
         Me.txtTimerOptA2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lblTimerOptA2Opt
@@ -123,7 +140,7 @@ Partial Class frmOpt2Log
         Me.lblTimerOptA2Opt.Location = New System.Drawing.Point(7, 44)
         Me.lblTimerOptA2Opt.Name = "lblTimerOptA2Opt"
         Me.lblTimerOptA2Opt.Size = New System.Drawing.Size(84, 13)
-        Me.lblTimerOptA2Opt.TabIndex = 5
+        Me.lblTimerOptA2Opt.TabIndex = 4
         Me.lblTimerOptA2Opt.Text = "Schedule Timer:"
         '
         'lstOptA2Opt
@@ -132,7 +149,7 @@ Partial Class frmOpt2Log
         Me.lstOptA2Opt.Location = New System.Drawing.Point(10, 93)
         Me.lstOptA2Opt.Name = "lstOptA2Opt"
         Me.lstOptA2Opt.Size = New System.Drawing.Size(248, 56)
-        Me.lstOptA2Opt.TabIndex = 4
+        Me.lstOptA2Opt.TabIndex = 9
         '
         'txtCountOptA2Opt
         '
@@ -189,12 +206,29 @@ Partial Class frmOpt2Log
         Me.grpOptB2Opt.TabStop = False
         Me.grpOptB2Opt.Text = "Option B"
         '
+        'txtMissOptB2Opt
+        '
+        Me.txtMissOptB2Opt.Location = New System.Drawing.Point(226, 42)
+        Me.txtMissOptB2Opt.Name = "txtMissOptB2Opt"
+        Me.txtMissOptB2Opt.Size = New System.Drawing.Size(32, 20)
+        Me.txtMissOptB2Opt.TabIndex = 7
+        Me.txtMissOptB2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(136, 69)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(80, 13)
+        Me.Label10.TabIndex = 10
+        Me.Label10.Text = "Time Allocated:"
+        '
         'txtTimeOptB2Opt
         '
         Me.txtTimeOptB2Opt.Location = New System.Drawing.Point(226, 67)
         Me.txtTimeOptB2Opt.Name = "txtTimeOptB2Opt"
         Me.txtTimeOptB2Opt.Size = New System.Drawing.Size(32, 20)
-        Me.txtTimeOptB2Opt.TabIndex = 10
+        Me.txtTimeOptB2Opt.TabIndex = 11
         Me.txtTimeOptB2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label8
@@ -203,7 +237,7 @@ Partial Class frmOpt2Log
         Me.Label8.Location = New System.Drawing.Point(136, 45)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(64, 13)
-        Me.Label8.TabIndex = 9
+        Me.Label8.TabIndex = 6
         Me.Label8.Text = "# of Misses:"
         '
         'Label2
@@ -220,7 +254,7 @@ Partial Class frmOpt2Log
         Me.txtTimerOptB2Opt.Location = New System.Drawing.Point(97, 44)
         Me.txtTimerOptB2Opt.Name = "txtTimerOptB2Opt"
         Me.txtTimerOptB2Opt.Size = New System.Drawing.Size(31, 20)
-        Me.txtTimerOptB2Opt.TabIndex = 7
+        Me.txtTimerOptB2Opt.TabIndex = 5
         Me.txtTimerOptB2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lblTimerOptB2Opt
@@ -229,7 +263,7 @@ Partial Class frmOpt2Log
         Me.lblTimerOptB2Opt.Location = New System.Drawing.Point(6, 45)
         Me.lblTimerOptB2Opt.Name = "lblTimerOptB2Opt"
         Me.lblTimerOptB2Opt.Size = New System.Drawing.Size(84, 13)
-        Me.lblTimerOptB2Opt.TabIndex = 6
+        Me.lblTimerOptB2Opt.TabIndex = 4
         Me.lblTimerOptB2Opt.Text = "Schedule Timer:"
         '
         'lstOptB2Opt
@@ -238,7 +272,7 @@ Partial Class frmOpt2Log
         Me.lstOptB2Opt.Location = New System.Drawing.Point(10, 93)
         Me.lstOptB2Opt.Name = "lstOptB2Opt"
         Me.lstOptB2Opt.Size = New System.Drawing.Size(248, 56)
-        Me.lstOptB2Opt.TabIndex = 4
+        Me.lstOptB2Opt.TabIndex = 9
         '
         'txtCountOptB2Opt
         '
@@ -291,7 +325,7 @@ Partial Class frmOpt2Log
         Me.txtChangeover2Opt.Location = New System.Drawing.Point(78, 337)
         Me.txtChangeover2Opt.Name = "txtChangeover2Opt"
         Me.txtChangeover2Opt.Size = New System.Drawing.Size(33, 20)
-        Me.txtChangeover2Opt.TabIndex = 3
+        Me.txtChangeover2Opt.TabIndex = 2
         Me.txtChangeover2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label4
@@ -300,7 +334,7 @@ Partial Class frmOpt2Log
         Me.Label4.Location = New System.Drawing.Point(117, 340)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(127, 13)
-        Me.Label4.TabIndex = 4
+        Me.Label4.TabIndex = 3
         Me.Label4.Text = "# of Schedule Reversals:"
         '
         'txtReversals2Opt
@@ -308,7 +342,7 @@ Partial Class frmOpt2Log
         Me.txtReversals2Opt.Location = New System.Drawing.Point(248, 337)
         Me.txtReversals2Opt.Name = "txtReversals2Opt"
         Me.txtReversals2Opt.Size = New System.Drawing.Size(33, 20)
-        Me.txtReversals2Opt.TabIndex = 5
+        Me.txtReversals2Opt.TabIndex = 4
         Me.txtReversals2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label5
@@ -317,7 +351,7 @@ Partial Class frmOpt2Log
         Me.Label5.Location = New System.Drawing.Point(12, 366)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(86, 13)
-        Me.Label5.TabIndex = 6
+        Me.Label5.TabIndex = 5
         Me.Label5.Text = "# of COD Clicks:"
         '
         'txtCODClicks2Opt
@@ -325,7 +359,7 @@ Partial Class frmOpt2Log
         Me.txtCODClicks2Opt.Location = New System.Drawing.Point(100, 363)
         Me.txtCODClicks2Opt.Name = "txtCODClicks2Opt"
         Me.txtCODClicks2Opt.Size = New System.Drawing.Size(33, 20)
-        Me.txtCODClicks2Opt.TabIndex = 7
+        Me.txtCODClicks2Opt.TabIndex = 6
         Me.txtCODClicks2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label6
@@ -334,7 +368,7 @@ Partial Class frmOpt2Log
         Me.Label6.Location = New System.Drawing.Point(146, 366)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(65, 13)
-        Me.Label6.TabIndex = 8
+        Me.Label6.TabIndex = 7
         Me.Label6.Text = "Total Clicks:"
         '
         'txtTotalClicks2Opt
@@ -342,42 +376,8 @@ Partial Class frmOpt2Log
         Me.txtTotalClicks2Opt.Location = New System.Drawing.Point(211, 363)
         Me.txtTotalClicks2Opt.Name = "txtTotalClicks2Opt"
         Me.txtTotalClicks2Opt.Size = New System.Drawing.Size(33, 20)
-        Me.txtTotalClicks2Opt.TabIndex = 9
+        Me.txtTotalClicks2Opt.TabIndex = 8
         Me.txtTotalClicks2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(136, 69)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(80, 13)
-        Me.Label9.TabIndex = 10
-        Me.Label9.Text = "Time Allocated:"
-        '
-        'txtMissOptA2Opt
-        '
-        Me.txtMissOptA2Opt.Location = New System.Drawing.Point(226, 43)
-        Me.txtMissOptA2Opt.Name = "txtMissOptA2Opt"
-        Me.txtMissOptA2Opt.Size = New System.Drawing.Size(32, 20)
-        Me.txtMissOptA2Opt.TabIndex = 11
-        Me.txtMissOptA2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(136, 69)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(80, 13)
-        Me.Label10.TabIndex = 11
-        Me.Label10.Text = "Time Allocated:"
-        '
-        'txtMissOptB2Opt
-        '
-        Me.txtMissOptB2Opt.Location = New System.Drawing.Point(226, 42)
-        Me.txtMissOptB2Opt.Name = "txtMissOptB2Opt"
-        Me.txtMissOptB2Opt.Size = New System.Drawing.Size(32, 20)
-        Me.txtMissOptB2Opt.TabIndex = 12
-        Me.txtMissOptB2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'frmOpt2Log
         '

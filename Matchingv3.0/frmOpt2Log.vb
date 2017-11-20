@@ -43,6 +43,7 @@
             txtTimeOptA2Opt.Text = frmMatching2Opt.TimeCountA
             txtTimeOptB2Opt.Text = frmMatching2Opt.TimeCountB
             txtChangeover2Opt.Text = frmMatching2Opt.CODCount
+            txtReversals2Opt.Text = frmMatching2Opt.schedCount
             txtCODClicks2Opt.Text = frmCODOpt2.intCODClickCount
             txtTotalClicks2Opt.Text = (CInt(txtCountOptA2Opt.Text)) + (CInt(txtCountOptB2Opt.Text)) + (CInt(txtCODClicks2Opt.Text)) + (CInt(txtMissOptA2Opt.Text)) + (CInt(txtMissOptB2Opt.Text))
         End If

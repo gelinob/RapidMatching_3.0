@@ -79,7 +79,7 @@ Partial Class frmOptions
         Me.GroupBox2.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(220, 69)
-        Me.GroupBox2.TabIndex = 1
+        Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Schedule Type"
         '
@@ -124,7 +124,7 @@ Partial Class frmOptions
         Me.grpOptionsManSched.Location = New System.Drawing.Point(6, 81)
         Me.grpOptionsManSched.Name = "grpOptionsManSched"
         Me.grpOptionsManSched.Size = New System.Drawing.Size(220, 142)
-        Me.grpOptionsManSched.TabIndex = 0
+        Me.grpOptionsManSched.TabIndex = 1
         Me.grpOptionsManSched.TabStop = False
         Me.grpOptionsManSched.Text = "Starting Schedule Values"
         '
@@ -134,7 +134,7 @@ Partial Class frmOptions
         Me.Label4.Location = New System.Drawing.Point(149, 16)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(51, 13)
-        Me.Label4.TabIndex = 14
+        Me.Label4.TabIndex = 1
         Me.Label4.Text = "Maximum"
         '
         'lblOptMin
@@ -143,7 +143,7 @@ Partial Class frmOptions
         Me.lblOptMin.Location = New System.Drawing.Point(87, 16)
         Me.lblOptMin.Name = "lblOptMin"
         Me.lblOptMin.Size = New System.Drawing.Size(48, 13)
-        Me.lblOptMin.TabIndex = 13
+        Me.lblOptMin.TabIndex = 0
         Me.lblOptMin.Text = "Minimum"
         '
         'txtOptSchedDMax
@@ -151,7 +151,7 @@ Partial Class frmOptions
         Me.txtOptSchedDMax.Location = New System.Drawing.Point(152, 111)
         Me.txtOptSchedDMax.Name = "txtOptSchedDMax"
         Me.txtOptSchedDMax.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptSchedDMax.TabIndex = 12
+        Me.txtOptSchedDMax.TabIndex = 13
         Me.txtOptSchedDMax.Text = "30"
         Me.txtOptSchedDMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -160,7 +160,7 @@ Partial Class frmOptions
         Me.txtOptSchedCMax.Location = New System.Drawing.Point(152, 88)
         Me.txtOptSchedCMax.Name = "txtOptSchedCMax"
         Me.txtOptSchedCMax.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptSchedCMax.TabIndex = 11
+        Me.txtOptSchedCMax.TabIndex = 10
         Me.txtOptSchedCMax.Text = "20"
         Me.txtOptSchedCMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -169,7 +169,7 @@ Partial Class frmOptions
         Me.txtOptSchedBMax.Location = New System.Drawing.Point(152, 65)
         Me.txtOptSchedBMax.Name = "txtOptSchedBMax"
         Me.txtOptSchedBMax.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptSchedBMax.TabIndex = 10
+        Me.txtOptSchedBMax.TabIndex = 7
         Me.txtOptSchedBMax.Text = "10"
         Me.txtOptSchedBMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -178,7 +178,7 @@ Partial Class frmOptions
         Me.txtOptSchedAMax.Location = New System.Drawing.Point(152, 41)
         Me.txtOptSchedAMax.Name = "txtOptSchedAMax"
         Me.txtOptSchedAMax.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptSchedAMax.TabIndex = 9
+        Me.txtOptSchedAMax.TabIndex = 4
         Me.txtOptSchedAMax.Text = "5"
         Me.txtOptSchedAMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -187,7 +187,7 @@ Partial Class frmOptions
         Me.txtOptSchedDMin.Location = New System.Drawing.Point(90, 111)
         Me.txtOptSchedDMin.Name = "txtOptSchedDMin"
         Me.txtOptSchedDMin.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptSchedDMin.TabIndex = 8
+        Me.txtOptSchedDMin.TabIndex = 12
         Me.txtOptSchedDMin.Text = "5"
         Me.txtOptSchedDMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -196,7 +196,7 @@ Partial Class frmOptions
         Me.txtOptSchedCMin.Location = New System.Drawing.Point(90, 88)
         Me.txtOptSchedCMin.Name = "txtOptSchedCMin"
         Me.txtOptSchedCMin.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptSchedCMin.TabIndex = 7
+        Me.txtOptSchedCMin.TabIndex = 9
         Me.txtOptSchedCMin.Text = "5"
         Me.txtOptSchedCMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -214,7 +214,7 @@ Partial Class frmOptions
         Me.txtOptSchedAMin.Location = New System.Drawing.Point(90, 41)
         Me.txtOptSchedAMin.Name = "txtOptSchedAMin"
         Me.txtOptSchedAMin.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptSchedAMin.TabIndex = 5
+        Me.txtOptSchedAMin.TabIndex = 3
         Me.txtOptSchedAMin.Text = "1"
         Me.txtOptSchedAMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -224,7 +224,7 @@ Partial Class frmOptions
         Me.Label3.Location = New System.Drawing.Point(6, 114)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(66, 13)
-        Me.Label3.TabIndex = 4
+        Me.Label3.TabIndex = 11
         Me.Label3.Text = "Schedule D:"
         '
         'Label2
@@ -233,7 +233,7 @@ Partial Class frmOptions
         Me.Label2.Location = New System.Drawing.Point(6, 91)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(65, 13)
-        Me.Label2.TabIndex = 3
+        Me.Label2.TabIndex = 8
         Me.Label2.Text = "Schedule C:"
         '
         'Label1
@@ -242,7 +242,7 @@ Partial Class frmOptions
         Me.Label1.Location = New System.Drawing.Point(6, 68)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(65, 13)
-        Me.Label1.TabIndex = 2
+        Me.Label1.TabIndex = 5
         Me.Label1.Text = "Schedule B:"
         '
         'lblSchedA
@@ -251,7 +251,7 @@ Partial Class frmOptions
         Me.lblSchedA.Location = New System.Drawing.Point(6, 44)
         Me.lblSchedA.Name = "lblSchedA"
         Me.lblSchedA.Size = New System.Drawing.Size(65, 13)
-        Me.lblSchedA.TabIndex = 1
+        Me.lblSchedA.TabIndex = 2
         Me.lblSchedA.Text = "Schedule A:"
         '
         'btnOptionsOK
