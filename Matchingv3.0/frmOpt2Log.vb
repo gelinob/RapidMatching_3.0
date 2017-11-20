@@ -39,6 +39,7 @@
             SchedulesOpt2()
             RecountOpt2()
             TimerLogOpt2()
+            Misses()
             txtTimeOptA2Opt.Text = frmMatching2Opt.TimeCountA
             txtTimeOptB2Opt.Text = frmMatching2Opt.TimeCountB
             txtChangeover2Opt.Text = frmMatching2Opt.CODCount

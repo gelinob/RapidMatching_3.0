@@ -26,6 +26,8 @@ Partial Class frmMatching2Opt
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMatching2Opt))
         Me.barOpt2 = New System.Windows.Forms.ProgressBar()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.grpOptA2Opt = New System.Windows.Forms.GroupBox()
+        Me.picOptA2Opt = New System.Windows.Forms.PictureBox()
         Me.btnOpt2Start = New System.Windows.Forms.Button()
         Me.btnOpt2Reset = New System.Windows.Forms.Button()
         Me.btnOpt2Log = New System.Windows.Forms.Button()
@@ -36,14 +38,12 @@ Partial Class frmMatching2Opt
         Me.picOptB2Opt = New System.Windows.Forms.PictureBox()
         Me.btnOpt2B = New System.Windows.Forms.Button()
         Me.tmr2OptMain = New System.Windows.Forms.Timer(Me.components)
-        Me.grpOptA2Opt = New System.Windows.Forms.GroupBox()
-        Me.picOptA2Opt = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
+        Me.grpOptA2Opt.SuspendLayout()
+        CType(Me.picOptA2Opt, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.grpOptB2Opt.SuspendLayout()
         CType(Me.picOptB2Opt, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpOptA2Opt.SuspendLayout()
-        CType(Me.picOptA2Opt, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'barOpt2
@@ -68,6 +68,27 @@ Partial Class frmMatching2Opt
         Me.GroupBox1.Size = New System.Drawing.Size(726, 410)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
+        '
+        'grpOptA2Opt
+        '
+        Me.grpOptA2Opt.Controls.Add(Me.picOptA2Opt)
+        Me.grpOptA2Opt.Location = New System.Drawing.Point(30, 33)
+        Me.grpOptA2Opt.Name = "grpOptA2Opt"
+        Me.grpOptA2Opt.Size = New System.Drawing.Size(228, 349)
+        Me.grpOptA2Opt.TabIndex = 8
+        Me.grpOptA2Opt.TabStop = False
+        Me.grpOptA2Opt.Text = "Option A"
+        '
+        'picOptA2Opt
+        '
+        Me.picOptA2Opt.Image = CType(resources.GetObject("picOptA2Opt.Image"), System.Drawing.Image)
+        Me.picOptA2Opt.ImageLocation = ""
+        Me.picOptA2Opt.InitialImage = Nothing
+        Me.picOptA2Opt.Location = New System.Drawing.Point(93, 154)
+        Me.picOptA2Opt.Name = "picOptA2Opt"
+        Me.picOptA2Opt.Size = New System.Drawing.Size(40, 40)
+        Me.picOptA2Opt.TabIndex = 1
+        Me.picOptA2Opt.TabStop = False
         '
         'btnOpt2Start
         '
@@ -143,7 +164,7 @@ Partial Class frmMatching2Opt
         Me.picOptB2Opt.InitialImage = Nothing
         Me.picOptB2Opt.Location = New System.Drawing.Point(179, 303)
         Me.picOptB2Opt.Name = "picOptB2Opt"
-        Me.picOptB2Opt.Size = New System.Drawing.Size(43, 40)
+        Me.picOptB2Opt.Size = New System.Drawing.Size(40, 40)
         Me.picOptB2Opt.TabIndex = 0
         Me.picOptB2Opt.TabStop = False
         '
@@ -160,27 +181,6 @@ Partial Class frmMatching2Opt
         '
         Me.tmr2OptMain.Interval = 1000
         '
-        'grpOptA2Opt
-        '
-        Me.grpOptA2Opt.Controls.Add(Me.picOptA2Opt)
-        Me.grpOptA2Opt.Location = New System.Drawing.Point(30, 33)
-        Me.grpOptA2Opt.Name = "grpOptA2Opt"
-        Me.grpOptA2Opt.Size = New System.Drawing.Size(228, 349)
-        Me.grpOptA2Opt.TabIndex = 8
-        Me.grpOptA2Opt.TabStop = False
-        Me.grpOptA2Opt.Text = "Option A"
-        '
-        'picOptA2Opt
-        '
-        Me.picOptA2Opt.Image = CType(resources.GetObject("picOptA2Opt.Image"), System.Drawing.Image)
-        Me.picOptA2Opt.ImageLocation = ""
-        Me.picOptA2Opt.InitialImage = Nothing
-        Me.picOptA2Opt.Location = New System.Drawing.Point(93, 154)
-        Me.picOptA2Opt.Name = "picOptA2Opt"
-        Me.picOptA2Opt.Size = New System.Drawing.Size(43, 40)
-        Me.picOptA2Opt.TabIndex = 1
-        Me.picOptA2Opt.TabStop = False
-        '
         'frmMatching2Opt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -193,12 +193,12 @@ Partial Class frmMatching2Opt
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Matching"
         Me.GroupBox1.ResumeLayout(False)
+        Me.grpOptA2Opt.ResumeLayout(False)
+        CType(Me.picOptA2Opt, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.grpOptB2Opt.ResumeLayout(False)
         CType(Me.picOptB2Opt, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.grpOptA2Opt.ResumeLayout(False)
-        CType(Me.picOptA2Opt, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

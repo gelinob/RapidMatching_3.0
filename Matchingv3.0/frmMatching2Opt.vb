@@ -70,15 +70,15 @@ Public Class frmMatching2Opt
 
     Private Sub randCondition()
         ' Generate random number representing time (in seconds) prior to schedule switch.
-        intRandCond = CInt(Math.Floor(120 - 20 + 1) * Rnd()) + 1
+        intRandCond = CInt(Math.Floor(120 - 20 + 1) * Rnd()) + 20
     End Sub
     Private Sub randPicA()
         ' Generate random number representing time (in seconds) prior to changing positing of A response.
-        intRandPicA = CInt(Math.Floor(10 - 3 + 1) * Rnd()) + 1
+        intRandPicA = CInt(Math.Floor(8 - 2 + 1) * Rnd()) + 2
     End Sub
     Private Sub randPicB()
         ' Generate random number representing time (in seconds) prior to changing position of B response.
-        intRandPicB = CInt(Math.Floor(10 - 3 + 1) * Rnd()) + 1
+        intRandPicB = CInt(Math.Floor(8 - 2 + 1) * Rnd()) + 2
     End Sub
 
     Private Sub ConditionCheck()
@@ -208,8 +208,8 @@ Public Class frmMatching2Opt
 
     Private Sub picAPosition()
         If TimePicA >= intRandPicA Then
-            Dim OptAx As Integer = Math.Floor((grpOptA2Opt.Width - 2) * Rnd())
-            Dim OptAy As Integer = Math.Floor((grpOptA2Opt.Height - 2) * Rnd())
+            Dim OptAx As Integer = Math.Floor((grpOptA2Opt.Width - picOptA2Opt.Width) * Rnd())
+            Dim OptAy As Integer = Math.Floor((grpOptA2Opt.Height - picOptB2Opt.Height) * Rnd())
 
             picOptA2Opt.Left = OptAx
             picOptA2Opt.Top = OptAy
