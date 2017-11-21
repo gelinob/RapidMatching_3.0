@@ -25,6 +25,7 @@ Partial Class frmOptions
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOptions))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pgeMatching2Opt = New System.Windows.Forms.TabPage()
+        Me.chkbxSchedChange = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.rdioOptionsManSched = New System.Windows.Forms.RadioButton()
         Me.rdioOptionsAutoSched = New System.Windows.Forms.RadioButton()
@@ -43,40 +44,59 @@ Partial Class frmOptions
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblSchedA = New System.Windows.Forms.Label()
+        Me.pgeProgBar = New System.Windows.Forms.TabPage()
         Me.btnOptionsOK = New System.Windows.Forms.Button()
         Me.btnOptionsCancel = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.chkbxBackCount = New System.Windows.Forms.CheckBox()
         Me.TabControl1.SuspendLayout()
         Me.pgeMatching2Opt.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.grpOptionsManSched.SuspendLayout()
+        Me.pgeProgBar.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.pgeMatching2Opt)
+        Me.TabControl1.Controls.Add(Me.pgeProgBar)
         Me.TabControl1.Location = New System.Drawing.Point(12, 13)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(240, 256)
+        Me.TabControl1.Size = New System.Drawing.Size(240, 289)
         Me.TabControl1.TabIndex = 0
         '
         'pgeMatching2Opt
         '
+        Me.pgeMatching2Opt.Controls.Add(Me.chkbxSchedChange)
         Me.pgeMatching2Opt.Controls.Add(Me.GroupBox2)
         Me.pgeMatching2Opt.Controls.Add(Me.grpOptionsManSched)
         Me.pgeMatching2Opt.Location = New System.Drawing.Point(4, 22)
         Me.pgeMatching2Opt.Name = "pgeMatching2Opt"
         Me.pgeMatching2Opt.Padding = New System.Windows.Forms.Padding(3)
-        Me.pgeMatching2Opt.Size = New System.Drawing.Size(232, 230)
+        Me.pgeMatching2Opt.Size = New System.Drawing.Size(232, 263)
         Me.pgeMatching2Opt.TabIndex = 0
-        Me.pgeMatching2Opt.Text = "Matching"
+        Me.pgeMatching2Opt.Text = "Schedules"
         Me.pgeMatching2Opt.UseVisualStyleBackColor = True
+        '
+        'chkbxSchedChange
+        '
+        Me.chkbxSchedChange.AutoSize = True
+        Me.chkbxSchedChange.Checked = True
+        Me.chkbxSchedChange.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkbxSchedChange.Location = New System.Drawing.Point(12, 13)
+        Me.chkbxSchedChange.Name = "chkbxSchedChange"
+        Me.chkbxSchedChange.Size = New System.Drawing.Size(119, 17)
+        Me.chkbxSchedChange.TabIndex = 8
+        Me.chkbxSchedChange.Text = "Changing Schedule"
+        Me.chkbxSchedChange.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.rdioOptionsManSched)
         Me.GroupBox2.Controls.Add(Me.rdioOptionsAutoSched)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 6)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 39)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(220, 69)
         Me.GroupBox2.TabIndex = 0
@@ -98,7 +118,7 @@ Partial Class frmOptions
         'rdioOptionsAutoSched
         '
         Me.rdioOptionsAutoSched.AutoSize = True
-        Me.rdioOptionsAutoSched.Location = New System.Drawing.Point(9, 20)
+        Me.rdioOptionsAutoSched.Location = New System.Drawing.Point(6, 21)
         Me.rdioOptionsAutoSched.Name = "rdioOptionsAutoSched"
         Me.rdioOptionsAutoSched.Size = New System.Drawing.Size(72, 17)
         Me.rdioOptionsAutoSched.TabIndex = 0
@@ -121,7 +141,7 @@ Partial Class frmOptions
         Me.grpOptionsManSched.Controls.Add(Me.Label2)
         Me.grpOptionsManSched.Controls.Add(Me.Label1)
         Me.grpOptionsManSched.Controls.Add(Me.lblSchedA)
-        Me.grpOptionsManSched.Location = New System.Drawing.Point(6, 81)
+        Me.grpOptionsManSched.Location = New System.Drawing.Point(6, 114)
         Me.grpOptionsManSched.Name = "grpOptionsManSched"
         Me.grpOptionsManSched.Size = New System.Drawing.Size(220, 142)
         Me.grpOptionsManSched.TabIndex = 1
@@ -131,7 +151,7 @@ Partial Class frmOptions
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(149, 16)
+        Me.Label4.Location = New System.Drawing.Point(149, 20)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(51, 13)
         Me.Label4.TabIndex = 1
@@ -140,7 +160,7 @@ Partial Class frmOptions
         'lblOptMin
         '
         Me.lblOptMin.AutoSize = True
-        Me.lblOptMin.Location = New System.Drawing.Point(87, 16)
+        Me.lblOptMin.Location = New System.Drawing.Point(87, 20)
         Me.lblOptMin.Name = "lblOptMin"
         Me.lblOptMin.Size = New System.Drawing.Size(48, 13)
         Me.lblOptMin.TabIndex = 0
@@ -254,6 +274,18 @@ Partial Class frmOptions
         Me.lblSchedA.TabIndex = 2
         Me.lblSchedA.Text = "Schedule A:"
         '
+        'pgeProgBar
+        '
+        Me.pgeProgBar.Controls.Add(Me.chkbxBackCount)
+        Me.pgeProgBar.Controls.Add(Me.TextBox1)
+        Me.pgeProgBar.Controls.Add(Me.Label5)
+        Me.pgeProgBar.Location = New System.Drawing.Point(4, 22)
+        Me.pgeProgBar.Name = "pgeProgBar"
+        Me.pgeProgBar.Size = New System.Drawing.Size(232, 263)
+        Me.pgeProgBar.TabIndex = 1
+        Me.pgeProgBar.Text = "Progress Bar"
+        Me.pgeProgBar.UseVisualStyleBackColor = True
+        '
         'btnOptionsOK
         '
         Me.btnOptionsOK.Location = New System.Drawing.Point(259, 35)
@@ -273,13 +305,41 @@ Partial Class frmOptions
         Me.btnOptionsCancel.Text = "Cancel"
         Me.btnOptionsCancel.UseVisualStyleBackColor = True
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(102, 17)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(40, 20)
+        Me.TextBox1.TabIndex = 5
+        Me.TextBox1.Text = "1"
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(18, 20)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(65, 13)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "Schedule A:"
+        '
+        'chkbxBackCount
+        '
+        Me.chkbxBackCount.AutoSize = True
+        Me.chkbxBackCount.Location = New System.Drawing.Point(21, 53)
+        Me.chkbxBackCount.Name = "chkbxBackCount"
+        Me.chkbxBackCount.Size = New System.Drawing.Size(108, 17)
+        Me.chkbxBackCount.TabIndex = 8
+        Me.chkbxBackCount.Text = "Rerverse Scoring"
+        Me.chkbxBackCount.UseVisualStyleBackColor = True
+        '
         'frmOptions
         '
         Me.AcceptButton = Me.btnOptionsOK
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnOptionsCancel
-        Me.ClientSize = New System.Drawing.Size(339, 282)
+        Me.ClientSize = New System.Drawing.Size(339, 308)
         Me.Controls.Add(Me.btnOptionsCancel)
         Me.Controls.Add(Me.btnOptionsOK)
         Me.Controls.Add(Me.TabControl1)
@@ -289,10 +349,13 @@ Partial Class frmOptions
         Me.Text = "Options"
         Me.TabControl1.ResumeLayout(False)
         Me.pgeMatching2Opt.ResumeLayout(False)
+        Me.pgeMatching2Opt.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.grpOptionsManSched.ResumeLayout(False)
         Me.grpOptionsManSched.PerformLayout()
+        Me.pgeProgBar.ResumeLayout(False)
+        Me.pgeProgBar.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -319,4 +382,9 @@ Partial Class frmOptions
     Friend WithEvents rdioOptionsAutoSched As RadioButton
     Friend WithEvents btnOptionsOK As Button
     Friend WithEvents btnOptionsCancel As Button
+    Friend WithEvents pgeProgBar As TabPage
+    Friend WithEvents chkbxSchedChange As CheckBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents chkbxBackCount As CheckBox
 End Class

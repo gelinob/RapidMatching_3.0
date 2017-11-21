@@ -12,7 +12,7 @@
                                         If IsNumeric(frmOptions.txtOptSchedCMax.Text) = True AndAlso CInt(frmOptions.txtOptSchedCMax.Text) >= 0 Then
                                             If IsNumeric(frmOptions.txtOptSchedDMax.Text) = True AndAlso CInt(frmOptions.txtOptSchedDMax.Text) >= 0 Then
                                                 If rdio2Opt.Checked = True Then
-                                                    frmMatching2Opt.Show()
+                                                    frmMatching2Opt.ShowDialog()
                                                 ElseIf rdio2Opt.Checked = True Then
 
                                                 End If

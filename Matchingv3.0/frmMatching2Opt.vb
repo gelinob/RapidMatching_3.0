@@ -95,23 +95,31 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub checkA()
-        If intCondition = 1 Then
-            'Generate a random schedule value within parameters for condition.
+        If frmOptions.chkbxSchedChange.Checked = True Then
+            If intCondition = 1 Then
+                'Generate a random schedule value within parameters for condition.
+                intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
+            ElseIf intCondition = 2 Then
+                intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
+            ElseIf intCondition = 3 Then
+                intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
+            End If
+        Else
             intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
-        ElseIf intCondition = 2 Then
-            intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
-        ElseIf intCondition = 3 Then
-            intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
         End If
     End Sub
 
     Private Sub checkB()
-        If intCondition = 1 Then
+        If frmOptions.chkbxSchedChange.Checked = True Then
+            If intCondition = 1 Then
+                intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
+            ElseIf intCondition = 2 Then
+                intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
+            ElseIf intCondition = 3 Then
+                intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) * CInt(frmOptions.txtOptSchedBMin.Text)
+            End If
+        Else
             intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
-        ElseIf intCondition = 2 Then
-            intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
-        ElseIf intCondition = 3 Then
-            intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) * CInt(frmOptions.txtOptSchedBMin.Text)
         End If
     End Sub
 
@@ -139,6 +147,8 @@ Public Class frmMatching2Opt
     Private Sub tmr2OptMain_Tick(sender As Object, e As EventArgs) Handles tmr2OptMain.Tick
         ' If COD NOT in effect, run schedule timers.
         If frmCODOpt2.tmrCODOpt2.Enabled = False Then
+            BorderStatus()
+            PhaseStatus()
             TimeA += 1
             TimeB += 1
             intConditionTime += 1
@@ -180,8 +190,9 @@ Public Class frmMatching2Opt
             ' If the progress bar is at the specified threshold...
             If barOpt2.Value > (CInt(frmStartUp.txtPtsReq.Text) - 1) Then
                 ' Prompt user and stop session timer.
-                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                 tmr2OptMain.Enabled = False
+                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                Me.Close()
             Else
                 ' If the progress bar was NOT at the specified theshold...
                 ' Set a new schedule value for the button.
@@ -198,8 +209,9 @@ Public Class frmMatching2Opt
             frmOpt2Log.lstOptB2Opt.Items.Insert(0, lbl2OptTimer.Text)
             barOpt2.Value += 1
             If barOpt2.Value > (CInt(frmStartUp.txtPtsReq.Text) - 1) Then
-                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                 tmr2OptMain.Enabled = False
+                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                Me.Close()
             Else
                 checkB()
                 TimeB = 0
@@ -240,4 +252,33 @@ Public Class frmMatching2Opt
     Private Sub grpOptB2Opt_Click(sender As Object, e As EventArgs) Handles grpOptB2Opt.Click
         missCountB += 1
     End Sub
+
+    Private Sub BorderStatus()
+        Dim rectBorder As System.Drawing.Graphics
+        rectBorder = Me.grpControlBox2Opt.CreateGraphics()
+        If intCondition = 1 Then
+            Dim myPen As New System.Drawing.Pen(System.Drawing.Color.Green)
+            rectBorder.DrawRectangle(myPen, 1, 5, grpControlBox2Opt.Width - 3, grpControlBox2Opt.Height - 6)
+        ElseIf intCondition = 2 Then
+            Dim myPen As New System.Drawing.Pen(System.Drawing.Color.Blue)
+            rectBorder.DrawRectangle(myPen, 1, 5, grpControlBox2Opt.Width - 3, grpControlBox2Opt.Height - 6)
+        ElseIf intCondition = 3 Then
+            Dim myPen As New System.Drawing.Pen(System.Drawing.Color.Red)
+            rectBorder.DrawRectangle(myPen, 1, 5, grpControlBox2Opt.Width - 3, grpControlBox2Opt.Height - 6)
+        End If
+    End Sub
+
+    Private Sub PhaseStatus()
+        If intCondition = 1 Then
+            lblPhase2Opt.Text = "Phase 1"
+            lblPhase2Opt.ForeColor = System.Drawing.Color.Green
+        ElseIf intCondition = 2 Then
+            lblPhase2Opt.Text = "Phase 2"
+            lblPhase2Opt.ForeColor = System.Drawing.Color.Blue
+        ElseIf intcondition = 3 Then
+            lblPhase2Opt.Text = "Phase 3"
+            lblPhase2Opt.ForeColor = System.Drawing.Color.Red
+        End If
+    End Sub
+
 End Class
