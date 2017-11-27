@@ -26,8 +26,6 @@ Partial Class frmStartUp
         Me.grpMatching = New System.Windows.Forms.GroupBox()
         Me.txtCODDuration = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtPtsReq = New System.Windows.Forms.TextBox()
         Me.grpMatchingOpt = New System.Windows.Forms.GroupBox()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.rdio2Opt = New System.Windows.Forms.RadioButton()
@@ -35,6 +33,8 @@ Partial Class frmStartUp
         Me.btnLaunch = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnMatchingOpt = New System.Windows.Forms.Button()
+        Me.txtBlackOut = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.grpMatching.SuspendLayout()
         Me.grpMatchingOpt.SuspendLayout()
         Me.SuspendLayout()
@@ -44,7 +44,7 @@ Partial Class frmStartUp
         Me.grpMatching.Controls.Add(Me.txtCODDuration)
         Me.grpMatching.Controls.Add(Me.Label2)
         Me.grpMatching.Controls.Add(Me.Label1)
-        Me.grpMatching.Controls.Add(Me.txtPtsReq)
+        Me.grpMatching.Controls.Add(Me.txtBlackOut)
         Me.grpMatching.Controls.Add(Me.grpMatchingOpt)
         Me.grpMatching.Controls.Add(Me.chkbxMatching)
         Me.grpMatching.Location = New System.Drawing.Point(12, 12)
@@ -56,9 +56,9 @@ Partial Class frmStartUp
         '
         'txtCODDuration
         '
-        Me.txtCODDuration.Location = New System.Drawing.Point(98, 117)
+        Me.txtCODDuration.Location = New System.Drawing.Point(111, 117)
         Me.txtCODDuration.Name = "txtCODDuration"
-        Me.txtCODDuration.Size = New System.Drawing.Size(28, 20)
+        Me.txtCODDuration.Size = New System.Drawing.Size(22, 20)
         Me.txtCODDuration.TabIndex = 6
         Me.txtCODDuration.Text = "3"
         Me.txtCODDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -66,29 +66,11 @@ Partial Class frmStartUp
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(4, 120)
+        Me.Label2.Location = New System.Drawing.Point(6, 120)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(90, 13)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "COD Duration (s):"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(4, 98)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(85, 13)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Points Required:"
-        '
-        'txtPtsReq
-        '
-        Me.txtPtsReq.Location = New System.Drawing.Point(98, 95)
-        Me.txtPtsReq.Name = "txtPtsReq"
-        Me.txtPtsReq.Size = New System.Drawing.Size(28, 20)
-        Me.txtPtsReq.TabIndex = 3
-        Me.txtPtsReq.Text = "10"
-        Me.txtPtsReq.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'grpMatchingOpt
         '
@@ -161,6 +143,24 @@ Partial Class frmStartUp
         Me.btnMatchingOpt.Text = "Options"
         Me.btnMatchingOpt.UseVisualStyleBackColor = True
         '
+        'txtBlackOut
+        '
+        Me.txtBlackOut.Location = New System.Drawing.Point(111, 95)
+        Me.txtBlackOut.Name = "txtBlackOut"
+        Me.txtBlackOut.Size = New System.Drawing.Size(22, 20)
+        Me.txtBlackOut.TabIndex = 3
+        Me.txtBlackOut.Text = "10"
+        Me.txtBlackOut.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(4, 98)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(109, 13)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Blackout Duration (s):"
+        '
         'frmStartUp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -191,9 +191,9 @@ Partial Class frmStartUp
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents rdio2Opt As RadioButton
     Friend WithEvents btnMatchingOpt As Button
-    Friend WithEvents Label1 As Label
-    Friend WithEvents txtPtsReq As TextBox
     Friend WithEvents chkbxMatching As CheckBox
     Friend WithEvents txtCODDuration As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtBlackOut As TextBox
 End Class

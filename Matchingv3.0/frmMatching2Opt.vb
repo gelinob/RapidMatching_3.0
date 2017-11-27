@@ -30,10 +30,7 @@ Public Class frmMatching2Opt
 
     Private Sub frmMatching2Opt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Determine progress bar length and starting place.
-        barOpt2.Minimum = 0
-        barOpt2.Maximum = CInt(frmStartUp.txtPtsReq.Text)
-        barOpt2.Visible = True
-        barOpt2.Value = barOpt2.Minimum
+        ProgBarInitialize()
 
         ' Hide buttons/timer prior to starting session.
         btnOpt2A.Visible = False
@@ -110,6 +107,8 @@ Public Class frmMatching2Opt
             intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
         ElseIf intCondition = 3 Then
             intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
+        ElseIf intCondition = 4 Then
+            Condition4()
         End If
     End Sub
 
@@ -120,6 +119,8 @@ Public Class frmMatching2Opt
             intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
         ElseIf intCondition = 3 Then
             intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) * CInt(frmOptions.txtOptSchedBMin.Text)
+        ElseIf intCondition = 4 Then
+            Condition4()
         End If
     End Sub
 
@@ -186,9 +187,13 @@ Public Class frmMatching2Opt
         ' If amount of time specified with random integer has passed...
         If TimeA >= intRandA Then
             ' Document time at which the point was earned.
-            frmOpt2Log.lstOptA2Opt.Items.Insert(0, lbl2OptTimer.Text)
+            frmOpt2Log.DocumentA()
             ' Advance the progress bar.
-            barOpt2.Value += 1
+            If frmOptions.chkbxBackCount.Checked = False Then
+                barOpt2.Value += 1
+            ElseIf frmOptions.chkbxBackCount.Checked = True Then
+                barOpt2.Value -= 1
+            End If
             ' If the progress bar is at the specified threshold...
             If barOpt2.Value = barOpt2.Maximum Then
                 ' Prompt user and stop session timer.
@@ -197,9 +202,11 @@ Public Class frmMatching2Opt
                     MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                     Me.Close()
                 ElseIf frmOptions.chkbxSchedChange.Checked = False Then
-                    MessageBox.Show("You've earned all points in this round!")
+                    tmr2OptMain.Enabled = False
+                    MessageBox.Show("You've earned all points in this phase!")
+                    frmBlackOutOpt2.ShowDialog()
                     ManualSchedChange()
-                    ProgBarReset()
+                    ProgBarInitialize()
                 End If
             Else
                 ' If the progress bar was NOT at the specified theshold...
@@ -214,17 +221,23 @@ Public Class frmMatching2Opt
     Private Sub picOptB2Opt_Click(sender As Object, e As EventArgs) Handles picOptB2Opt.Click
         intCountB += 1
         If TimeB >= intRandB Then
-            frmOpt2Log.lstOptB2Opt.Items.Insert(0, lbl2OptTimer.Text)
-            barOpt2.Value += 1
+            frmOpt2Log.DocumentB()
+            If frmOptions.chkbxBackCount.Checked = False Then
+                barOpt2.Value += 1
+            ElseIf frmOptions.chkbxBackCount.Checked = True Then
+                barOpt2.Value -= 1
+            End If
             If barOpt2.Value = barOpt2.Maximum Then
                 If frmOptions.chkbxSchedChange.Checked = True Then
                     tmr2OptMain.Enabled = False
                     MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                     Me.Close()
                 ElseIf frmOptions.chkbxSchedChange.Checked = False Then
-                    MessageBox.Show("You've earned all points in this round!")
+                    tmr2OptMain.Enabled = False
+                    MessageBox.Show("You've earned all points in this phase!")
+                    frmBlackOutOpt2.ShowDialog()
                     ManualSchedChange()
-                    ProgBarReset()
+                    ProgBarInitialize()
                 End If
             Else
                 checkB()
@@ -341,9 +354,31 @@ Public Class frmMatching2Opt
         btnOpt2Start.Visible = True
     End Sub
 
-    Private Sub ProgBarReset()
-        If barOpt2.Value = barOpt2.Maximum Then
+    Private Sub ProgBarInitialize()
+        If frmOptions.chkbxBackCount.Checked = False Then
+            barOpt2.Minimum = 0
+            barOpt2.Maximum = CInt(frmOptions.txtbxOptionsBarValue.Text)
             barOpt2.Value = barOpt2.Minimum
+        ElseIf frmOptions.chkbxBackCount.Checked = True Then
+            barOpt2.Minimum = 0
+            barOpt2.Maximum = CInt(frmOptions.txtbxOptionsBarValue.Text)
+            barOpt2.Value = barOpt2.Maximum
+        End If
+
+        barOpt2.Visible = True
+    End Sub
+
+    Private Sub Condition4()
+        Dim varCond As Integer = CInt(Math.Floor(3 * Rnd())) + 1
+        If varCond = 1 Then
+            intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
+            intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
+        ElseIf intCondition = 2 Then
+            intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
+            intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
+        ElseIf intCondition = 3 Then
+            intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
+            intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) * CInt(frmOptions.txtOptSchedBMin.Text)
         End If
     End Sub
 End Class

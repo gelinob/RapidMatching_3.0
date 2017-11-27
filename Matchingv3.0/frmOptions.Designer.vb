@@ -47,10 +47,9 @@ Partial Class frmOptions
         Me.lblSchedA = New System.Windows.Forms.Label()
         Me.pgeProgBar = New System.Windows.Forms.TabPage()
         Me.chkbxBackCount = New System.Windows.Forms.CheckBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtbxOptionsBarValue = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnOptionsOK = New System.Windows.Forms.Button()
-        Me.btnOptionsCancel = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.pgeMatching2Opt.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -97,9 +96,9 @@ Partial Class frmOptions
         Me.chkbxSchedChange.AutoSize = True
         Me.chkbxSchedChange.Location = New System.Drawing.Point(12, 13)
         Me.chkbxSchedChange.Name = "chkbxSchedChange"
-        Me.chkbxSchedChange.Size = New System.Drawing.Size(114, 17)
+        Me.chkbxSchedChange.Size = New System.Drawing.Size(142, 17)
         Me.chkbxSchedChange.TabIndex = 8
-        Me.chkbxSchedChange.Text = "VI Phase Changes"
+        Me.chkbxSchedChange.Text = "Variable Phase Changes"
         Me.chkbxSchedChange.UseVisualStyleBackColor = True
         '
         'GroupBox2
@@ -287,7 +286,7 @@ Partial Class frmOptions
         'pgeProgBar
         '
         Me.pgeProgBar.Controls.Add(Me.chkbxBackCount)
-        Me.pgeProgBar.Controls.Add(Me.TextBox1)
+        Me.pgeProgBar.Controls.Add(Me.txtbxOptionsBarValue)
         Me.pgeProgBar.Controls.Add(Me.Label5)
         Me.pgeProgBar.Location = New System.Drawing.Point(4, 22)
         Me.pgeProgBar.Name = "pgeProgBar"
@@ -299,30 +298,30 @@ Partial Class frmOptions
         'chkbxBackCount
         '
         Me.chkbxBackCount.AutoSize = True
-        Me.chkbxBackCount.Location = New System.Drawing.Point(21, 53)
+        Me.chkbxBackCount.Location = New System.Drawing.Point(39, 36)
         Me.chkbxBackCount.Name = "chkbxBackCount"
         Me.chkbxBackCount.Size = New System.Drawing.Size(108, 17)
         Me.chkbxBackCount.TabIndex = 8
         Me.chkbxBackCount.Text = "Rerverse Scoring"
         Me.chkbxBackCount.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtbxOptionsBarValue
         '
-        Me.TextBox1.Location = New System.Drawing.Point(102, 17)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(40, 20)
-        Me.TextBox1.TabIndex = 5
-        Me.TextBox1.Text = "1"
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtbxOptionsBarValue.Location = New System.Drawing.Point(166, 14)
+        Me.txtbxOptionsBarValue.Name = "txtbxOptionsBarValue"
+        Me.txtbxOptionsBarValue.Size = New System.Drawing.Size(40, 20)
+        Me.txtbxOptionsBarValue.TabIndex = 5
+        Me.txtbxOptionsBarValue.Text = "10"
+        Me.txtbxOptionsBarValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(18, 20)
+        Me.Label5.Location = New System.Drawing.Point(18, 17)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(65, 13)
+        Me.Label5.Size = New System.Drawing.Size(142, 13)
         Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Schedule A:"
+        Me.Label5.Text = "Points for Phase Completion:"
         '
         'btnOptionsOK
         '
@@ -333,29 +332,18 @@ Partial Class frmOptions
         Me.btnOptionsOK.Text = "OK"
         Me.btnOptionsOK.UseVisualStyleBackColor = True
         '
-        'btnOptionsCancel
-        '
-        Me.btnOptionsCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnOptionsCancel.Location = New System.Drawing.Point(259, 65)
-        Me.btnOptionsCancel.Name = "btnOptionsCancel"
-        Me.btnOptionsCancel.Size = New System.Drawing.Size(75, 23)
-        Me.btnOptionsCancel.TabIndex = 2
-        Me.btnOptionsCancel.Text = "Cancel"
-        Me.btnOptionsCancel.UseVisualStyleBackColor = True
-        '
         'frmOptions
         '
         Me.AcceptButton = Me.btnOptionsOK
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.btnOptionsCancel
         Me.ClientSize = New System.Drawing.Size(339, 334)
-        Me.Controls.Add(Me.btnOptionsCancel)
         Me.Controls.Add(Me.btnOptionsOK)
         Me.Controls.Add(Me.TabControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmOptions"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Options"
         Me.TabControl1.ResumeLayout(False)
         Me.pgeMatching2Opt.ResumeLayout(False)
@@ -391,10 +379,9 @@ Partial Class frmOptions
     Friend WithEvents rdioOptionsManSched As RadioButton
     Friend WithEvents rdioOptionsAutoSched As RadioButton
     Friend WithEvents btnOptionsOK As Button
-    Friend WithEvents btnOptionsCancel As Button
     Friend WithEvents pgeProgBar As TabPage
     Friend WithEvents chkbxSchedChange As CheckBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtbxOptionsBarValue As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents chkbxBackCount As CheckBox
     Friend WithEvents chkbxOptionsRandom As CheckBox

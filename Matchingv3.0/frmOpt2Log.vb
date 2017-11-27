@@ -1,5 +1,6 @@
 ﻿Public Class frmOpt2Log
     Private Sub frmOpt2Log_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Location = New Point(frmMatching2Opt.Left - Me.Width, frmMatching2Opt.Top)
         ' Begin timer for regular "count" updates.
         tmrLog2Opt.Enabled = True
     End Sub
@@ -21,11 +22,11 @@
 
     Public Sub DocumentA()
         ' Record the session time at which each reinforcer is earned.
-        lstOptA2Opt.Items.Insert(0, frmMatching2Opt.lbl2OptTimer.Text)
+        lstOptA2Opt.Items.Insert(0, "Phase " & CStr(frmMatching2Opt.intCondition) & " | Point " & CStr(frmMatching2Opt.barOpt2.Value + 1) & " | " & frmMatching2Opt.lbl2OptTimer.Text & " sec.")
     End Sub
 
     Public Sub DocumentB()
-        lstOptB2Opt.Items.Insert(0, frmMatching2Opt.lbl2OptTimer.Text)
+        lstOptB2Opt.Items.Insert(0, "Phase " & CStr(frmMatching2Opt.intCondition) & " | Point " & CStr(frmMatching2Opt.barOpt2.Value + 1) & " | " & frmMatching2Opt.lbl2OptTimer.Text & " sec.")
     End Sub
 
     Public Sub Misses()

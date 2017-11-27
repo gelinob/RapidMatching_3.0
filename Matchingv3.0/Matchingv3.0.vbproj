@@ -87,6 +87,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBlackOutOpt2.Designer.vb">
+      <DependentUpon>frmBlackOutOpt2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBlackOutOpt2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmCODOpt2.Designer.vb">
       <DependentUpon>frmCODOpt2.vb</DependentUpon>
     </Compile>
@@ -135,6 +141,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmBlackOutOpt2.resx">
+      <DependentUpon>frmBlackOutOpt2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCODOpt2.resx">
       <DependentUpon>frmCODOpt2.vb</DependentUpon>
     </EmbeddedResource>

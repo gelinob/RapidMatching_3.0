@@ -122,9 +122,9 @@ Partial Class frmOpt2Log
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(6, 77)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(114, 13)
+        Me.Label1.Size = New System.Drawing.Size(62, 13)
         Me.Label1.TabIndex = 8
-        Me.Label1.Text = "Time of R+ Delivery (s)"
+        Me.Label1.Text = "R+ Delivery"
         '
         'txtTimerOptA2Opt
         '
@@ -245,9 +245,9 @@ Partial Class frmOpt2Log
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(7, 77)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(114, 13)
+        Me.Label2.Size = New System.Drawing.Size(62, 13)
         Me.Label2.TabIndex = 8
-        Me.Label2.Text = "Time of R+ Delivery (s)"
+        Me.Label2.Text = "R+ Delivery"
         '
         'txtTimerOptB2Opt
         '
@@ -396,7 +396,7 @@ Partial Class frmOpt2Log
         Me.Controls.Add(Me.grpOptA2Opt)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmOpt2Log"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Log"
         Me.grpOptA2Opt.ResumeLayout(False)
         Me.grpOptA2Opt.PerformLayout()

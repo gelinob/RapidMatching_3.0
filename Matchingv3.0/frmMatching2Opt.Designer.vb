@@ -26,6 +26,7 @@ Partial Class frmMatching2Opt
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMatching2Opt))
         Me.barOpt2 = New System.Windows.Forms.ProgressBar()
         Me.grpControlBox2Opt = New System.Windows.Forms.GroupBox()
+        Me.lblPhase2Opt = New System.Windows.Forms.Label()
         Me.grpOptA2Opt = New System.Windows.Forms.GroupBox()
         Me.picOptA2Opt = New System.Windows.Forms.PictureBox()
         Me.btnOpt2Start = New System.Windows.Forms.Button()
@@ -38,7 +39,6 @@ Partial Class frmMatching2Opt
         Me.picOptB2Opt = New System.Windows.Forms.PictureBox()
         Me.btnOpt2B = New System.Windows.Forms.Button()
         Me.tmr2OptMain = New System.Windows.Forms.Timer(Me.components)
-        Me.lblPhase2Opt = New System.Windows.Forms.Label()
         Me.grpControlBox2Opt.SuspendLayout()
         Me.grpOptA2Opt.SuspendLayout()
         CType(Me.picOptA2Opt, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,6 +76,15 @@ Partial Class frmMatching2Opt
         Me.grpControlBox2Opt.Size = New System.Drawing.Size(726, 410)
         Me.grpControlBox2Opt.TabIndex = 1
         Me.grpControlBox2Opt.TabStop = False
+        '
+        'lblPhase2Opt
+        '
+        Me.lblPhase2Opt.AutoSize = True
+        Me.lblPhase2Opt.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPhase2Opt.Location = New System.Drawing.Point(333, 243)
+        Me.lblPhase2Opt.Name = "lblPhase2Opt"
+        Me.lblPhase2Opt.Size = New System.Drawing.Size(0, 20)
+        Me.lblPhase2Opt.TabIndex = 9
         '
         'grpOptA2Opt
         '
@@ -224,15 +233,6 @@ Partial Class frmMatching2Opt
         '
         Me.tmr2OptMain.Interval = 1000
         '
-        'lblPhase2Opt
-        '
-        Me.lblPhase2Opt.AutoSize = True
-        Me.lblPhase2Opt.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPhase2Opt.Location = New System.Drawing.Point(333, 243)
-        Me.lblPhase2Opt.Name = "lblPhase2Opt"
-        Me.lblPhase2Opt.Size = New System.Drawing.Size(0, 20)
-        Me.lblPhase2Opt.TabIndex = 9
-        '
         'frmMatching2Opt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -240,6 +240,7 @@ Partial Class frmMatching2Opt
         Me.ClientSize = New System.Drawing.Size(750, 463)
         Me.Controls.Add(Me.grpControlBox2Opt)
         Me.Controls.Add(Me.barOpt2)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMatching2Opt"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

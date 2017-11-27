@@ -13,3 +13,4 @@ C:\Users\Known Guest\Documents\Visual Studio 2015\Projects\Matchingv3.0\obj\Debu
 C:\Users\Known Guest\documents\visual studio 2015\Projects\Matchingv3.0\obj\Debug\Matchingv3._0.frmOpt2Log.resources
 C:\Users\Known Guest\Documents\Visual Studio 2015\Projects\Matchingv3.0\obj\Debug\Matchingv3._0.frmCODOpt2.resources
 C:\Users\Known Guest\Documents\Visual Studio 2015\Projects\Matchingv3.0\obj\Debug\Matchingv3._0.frmOptions.resources
+C:\Users\Known Guest\Documents\Visual Studio 2015\Projects\Matchingv3.0\obj\Debug\Matchingv3._0.frmBlackOutOpt2.resources
