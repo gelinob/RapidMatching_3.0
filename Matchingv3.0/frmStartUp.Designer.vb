@@ -26,6 +26,8 @@ Partial Class frmStartUp
         Me.grpMatching = New System.Windows.Forms.GroupBox()
         Me.txtCODDuration = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtBlackOut = New System.Windows.Forms.TextBox()
         Me.grpMatchingOpt = New System.Windows.Forms.GroupBox()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.rdio2Opt = New System.Windows.Forms.RadioButton()
@@ -33,8 +35,6 @@ Partial Class frmStartUp
         Me.btnLaunch = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnMatchingOpt = New System.Windows.Forms.Button()
-        Me.txtBlackOut = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.grpMatching.SuspendLayout()
         Me.grpMatchingOpt.SuspendLayout()
         Me.SuspendLayout()
@@ -71,6 +71,24 @@ Partial Class frmStartUp
         Me.Label2.Size = New System.Drawing.Size(90, 13)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "COD Duration (s):"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(4, 98)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(109, 13)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Blackout Duration (s):"
+        '
+        'txtBlackOut
+        '
+        Me.txtBlackOut.Location = New System.Drawing.Point(111, 95)
+        Me.txtBlackOut.Name = "txtBlackOut"
+        Me.txtBlackOut.Size = New System.Drawing.Size(22, 20)
+        Me.txtBlackOut.TabIndex = 3
+        Me.txtBlackOut.Text = "10"
+        Me.txtBlackOut.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'grpMatchingOpt
         '
@@ -142,24 +160,6 @@ Partial Class frmStartUp
         Me.btnMatchingOpt.TabIndex = 3
         Me.btnMatchingOpt.Text = "Options"
         Me.btnMatchingOpt.UseVisualStyleBackColor = True
-        '
-        'txtBlackOut
-        '
-        Me.txtBlackOut.Location = New System.Drawing.Point(111, 95)
-        Me.txtBlackOut.Name = "txtBlackOut"
-        Me.txtBlackOut.Size = New System.Drawing.Size(22, 20)
-        Me.txtBlackOut.TabIndex = 3
-        Me.txtBlackOut.Text = "10"
-        Me.txtBlackOut.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(4, 98)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(109, 13)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Blackout Duration (s):"
         '
         'frmStartUp
         '

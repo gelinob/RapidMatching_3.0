@@ -2,14 +2,18 @@
     Private Sub rdioOptionsAutoSched_CheckedChanged(sender As Object, e As EventArgs) Handles rdioOptionsAutoSched.CheckedChanged
         If grpOptionsManSched.Visible = True Then
             grpOptionsManSched.Hide()
+            grpOptionsAutoSched.Show()
         End If
     End Sub
 
     Private Sub rdioOptionsManSched_CheckedChanged(sender As Object, e As EventArgs) Handles rdioOptionsManSched.CheckedChanged
-        If grpOptionsManSched.Visible = False Then
+        If grpOptionsAutoSched.Visible = True Then
+            grpOptionsAutoSched.Hide()
             grpOptionsManSched.Show()
         End If
     End Sub
+
+
 
     Private Sub btnOptionsOK_Click(sender As Object, e As EventArgs) Handles btnOptionsOK.Click
         If IsNumeric(txtOptSchedAMin.Text) = True AndAlso CInt(txtOptSchedAMin.Text) >= 0 Then
@@ -26,10 +30,10 @@
                                             MessageBox.Show("Please enter a valid numeric value for progress bar points required.")
                                         End If
                                     Else
-                                            MessageBox.Show("Please enter a valid numeric value for Schedule D.")
-                                            Exit Sub
-                                        End If
-                                    Else
+                                        MessageBox.Show("Please enter a valid numeric value for Schedule D.")
+                                        Exit Sub
+                                    End If
+                                Else
                                     MessageBox.Show("Please enter a valid numeric value for Schedule C.")
                                     Exit Sub
                                 End If
@@ -56,6 +60,16 @@
         Else
             MessageBox.Show("Please enter a valid numeric value for Schedule A.")
             Exit Sub
+        End If
+    End Sub
+
+    Private Sub frmOptions_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If rdioOptionsAutoSched.Checked = True Then
+            grpOptionsAutoSched.Show()
+            grpOptionsManSched.Hide()
+        ElseIf rdioOptionsManSched.Checked = True Then
+            grpOptionsManSched.Show()
+            grpOptionsAutoSched.Hide()
         End If
     End Sub
 

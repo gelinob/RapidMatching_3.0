@@ -22,11 +22,11 @@
 
     Public Sub DocumentA()
         ' Record the session time at which each reinforcer is earned.
-        lstOptA2Opt.Items.Insert(0, "Phase " & CStr(frmMatching2Opt.intCondition) & " | Point " & CStr(frmMatching2Opt.barOpt2.Value + 1) & " | " & frmMatching2Opt.lbl2OptTimer.Text & " sec.")
+        lstOptA2Opt.Items.Insert(0, "Phase " & CStr(frmMatching2Opt.intCondition) & " || Point " & CStr(frmMatching2Opt.barOpt2.Value + 1) & " || " & frmMatching2Opt.lbl2OptTimer.Text & " sec.")
     End Sub
 
     Public Sub DocumentB()
-        lstOptB2Opt.Items.Insert(0, "Phase " & CStr(frmMatching2Opt.intCondition) & " | Point " & CStr(frmMatching2Opt.barOpt2.Value + 1) & " | " & frmMatching2Opt.lbl2OptTimer.Text & " sec.")
+        lstOptB2Opt.Items.Insert(0, "Phase " & CStr(frmMatching2Opt.intCondition) & " || Point " & CStr(frmMatching2Opt.barOpt2.Value + 1) & " || " & frmMatching2Opt.lbl2OptTimer.Text & " sec.")
     End Sub
 
     Public Sub Misses()

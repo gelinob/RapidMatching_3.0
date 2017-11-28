@@ -22,6 +22,10 @@
             intBlackOut = 0
             tmrBlackOutOpt2.Enabled = False
             frmMatching2Opt.tmr2OptMain.Enabled = True
+            frmMatching2Opt.ManualSchedChange()
+            frmMatching2Opt.ProgBarInitialize()
+            frmMatching2Opt.TimeA = 0
+            frmMatching2Opt.TimeB = 0
             Me.Close()
         End If
     End Sub

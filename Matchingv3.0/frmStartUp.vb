@@ -5,18 +5,14 @@
             If rdio2Opt.Checked = True Then
                 frmMatching2Opt.ShowDialog()
             ElseIf rdio2Opt.Checked = True Then
-
             End If
         Else
-
             MessageBox.Show("Please enter a valid numeric value for points required.")
             Exit Sub
         End If
-
     End Sub
 
     Private Sub btnMatchingOpt_Click(sender As Object, e As EventArgs) Handles btnMatchingOpt.Click
         frmOptions.ShowDialog()
-
     End Sub
 End Class

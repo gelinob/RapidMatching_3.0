@@ -15,6 +15,7 @@ Public Class frmMatching2Opt
     Public missCountA As Integer
     Public missCountB As Integer
     Public schedCount As Integer
+    Public conditionCount As Integer
 
     Public intCondition As Integer
 
@@ -26,9 +27,14 @@ Public Class frmMatching2Opt
     Public TimePicA As Integer
     Public TimePicB As Integer
 
+    Public viListA As New List(Of Long)
+    Public viListB As New List(Of Long)
+
     Public lstCondition As New List(Of Integer)
 
     Private Sub frmMatching2Opt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        frmStartUp.Hide()
+
         ' Determine progress bar length and starting place.
         ProgBarInitialize()
 
@@ -37,9 +43,6 @@ Public Class frmMatching2Opt
         btnOpt2B.Visible = False
         btnOpt2Reset.Visible = False
         lbl2OptTimer.Visible = False
-
-        ' Set initial condition.
-        intCondition = 1
 
         ' Hide response options until buttons pressed.
         grpOptA2Opt.Visible = False
@@ -67,6 +70,18 @@ Public Class frmMatching2Opt
             randCondition()
         ElseIf frmOptions.rdioOptionsManSched.Checked = True AndAlso frmOptions.chkbxSchedChange.Checked = False Then
             CreateConditionList()
+        End If
+
+        ' Set initial condition.
+        If frmOptions.chkbxOptionsRandom.Checked = True Then
+            ManualSchedChange()
+        Else
+            intCondition = 1
+        End If
+
+        If frmOptions.rdioOptionsAutoSched.Checked = True Then
+            picA_FHSched()
+            picB_FHSched()
         End If
 
         checkA()
@@ -100,27 +115,49 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub checkA()
-        If intCondition = 1 Then
-            'Generate a random schedule value within parameters for condition.
-            intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
-        ElseIf intCondition = 2 Then
-            intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
-        ElseIf intCondition = 3 Then
-            intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
-        ElseIf intCondition = 4 Then
-            Condition4()
+        If frmOptions.rdioOptionsManSched.Checked = True Then
+            If intCondition = 1 Then
+                'Generate a random schedule value within parameters for condition.
+                intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
+            ElseIf intCondition = 2 Then
+                intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
+            ElseIf intCondition = 3 Then
+                intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
+            ElseIf intCondition = 4 Then
+                Condition4()
+            End If
+        ElseIf frmOptions.rdioOptionsAutoSched.Checked = True Then
+            Dim randVI_A As New Integer
+            Dim viValue_A As New Long
+
+            randVI_A = CInt(Math.Floor(viListA.Count * Rnd())) + 1 'Add two because list starts at index 0
+            viValue_A = viListA.Item(randVI_A)
+            intRandA = viValue_A
+            viListA.Remove(viValue_A)
+
         End If
     End Sub
 
     Private Sub checkB()
-        If intCondition = 1 Then
-            intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
-        ElseIf intCondition = 2 Then
-            intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
-        ElseIf intCondition = 3 Then
-            intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) * CInt(frmOptions.txtOptSchedBMin.Text)
-        ElseIf intCondition = 4 Then
-            Condition4()
+        If frmOptions.rdioOptionsManSched.Checked = True Then
+            If intCondition = 1 Then
+                intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
+            ElseIf intCondition = 2 Then
+                intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
+            ElseIf intCondition = 3 Then
+                intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) * CInt(frmOptions.txtOptSchedBMin.Text)
+            ElseIf intCondition = 4 Then
+                Condition4()
+            End If
+        ElseIf frmOptions.rdioOptionsAutoSched.Checked = True Then
+            Dim randVI_B As New Integer
+            Dim viValue_B As New Long
+
+            randVI_B = CInt(Math.Floor(viListB.Count * Rnd())) + 1 'Add two because list starts at index 0
+            viValue_B = viListB.Item(randVI_B)
+            intRandB = viValue_B
+            viListB.Remove(viValue_B)
+
         End If
     End Sub
 
@@ -141,8 +178,11 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub btnOpt2Log_Click(sender As Object, e As EventArgs) Handles btnOpt2Log.Click
-        frmOpt2Log.Show()
-
+        If frmOpt2Log.Visible = True Then
+            frmOpt2Log.Hide()
+        ElseIf frmOpt2Log.visible = False Then
+            frmOpt2Log.Show()
+        End If
     End Sub
 
     Private Sub tmr2OptMain_Tick(sender As Object, e As EventArgs) Handles tmr2OptMain.Tick
@@ -197,21 +237,22 @@ Public Class frmMatching2Opt
             ' If the progress bar is at the specified threshold...
             If barOpt2.Value = barOpt2.Maximum Then
                 ' Prompt user and stop session timer.
+                tmr2OptMain.Enabled = False
                 If frmOptions.chkbxSchedChange.Checked = True Then
-                    tmr2OptMain.Enabled = False
                     MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                     Me.Close()
                 ElseIf frmOptions.chkbxSchedChange.Checked = False Then
-                    tmr2OptMain.Enabled = False
-                    MessageBox.Show("You've earned all points in this phase!")
-                    frmBlackOutOpt2.ShowDialog()
-                    ManualSchedChange()
-                    ProgBarInitialize()
+                    If intCondition = 4 Then
+                        MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                        Me.Close()
+                    Else
+                        frmBlackOutOpt2.ShowDialog()
+                    End If
                 End If
-            Else
-                ' If the progress bar was NOT at the specified theshold...
-                ' Set a new schedule value for the button.
-                checkA()
+                Else
+                    ' If the progress bar was NOT at the specified theshold...
+                    ' Set a new schedule value for the button.
+                    checkA()
                 ' Reset the button's timer.
                 TimeA = 0
             End If
@@ -227,23 +268,77 @@ Public Class frmMatching2Opt
             ElseIf frmOptions.chkbxBackCount.Checked = True Then
                 barOpt2.Value -= 1
             End If
+            tmr2OptMain.Enabled = False
             If barOpt2.Value = barOpt2.Maximum Then
                 If frmOptions.chkbxSchedChange.Checked = True Then
-                    tmr2OptMain.Enabled = False
                     MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                     Me.Close()
                 ElseIf frmOptions.chkbxSchedChange.Checked = False Then
-                    tmr2OptMain.Enabled = False
-                    MessageBox.Show("You've earned all points in this phase!")
-                    frmBlackOutOpt2.ShowDialog()
-                    ManualSchedChange()
-                    ProgBarInitialize()
+                    If intCondition = 4 Then
+                        MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                        Me.Close()
+                    Else
+                        frmBlackOutOpt2.ShowDialog()
+                    End If
                 End If
             Else
                 checkB()
                 TimeB = 0
             End If
         End If
+    End Sub
+
+    Private Sub picA_FHSched()
+        Dim viProbA As New Integer 'P
+        Dim viIntA As New Integer 'n
+        Dim viCountA As New Integer 'N
+
+        viIntA = 1
+        viCountA = CInt(frmOptions.txtOptionsIntOptA2Opt.Text)
+        viProbA = CInt(frmOptions.txtOptionsVIOptA2Opt.Text)
+
+        Do While viIntA <= viCountA
+            If viIntA = viCountA Then
+                Dim viValue As Long = viProbA * (1 + Math.Log(viCountA))
+                viListA.Add(viValue)
+                Debug.Print(viValue)
+                viIntA += 1
+            Else
+                Dim viValue As Long = viProbA * (1 + Math.Log(viCountA) + (viCountA - viIntA) * Math.Log(viCountA - viIntA) - (viCountA - viIntA + 1) * Math.Log(viCountA - viIntA + 1))
+                viListA.Add(viValue)
+                Debug.Print(viValue)
+                viIntA += 1
+            End If
+
+        Loop
+
+
+    End Sub
+    Private Sub picB_FHSched()
+        Dim viProbB As New Integer 'P
+        Dim viIntB As New Integer 'n
+        Dim viCountB As New Integer 'N
+
+        viIntB = 1
+        viCountB = CInt(frmOptions.txtOptionsIntOptB2Opt.Text)
+        viProbB = CInt(frmOptions.txtOptionsVIOptB2Opt.Text)
+
+        Do While viIntB <= viCountB
+            If viIntB = viCountB Then
+                Dim viValue As Long = viProbB * (1 + Math.Log(viCountB))
+                viListB.Add(viValue)
+                Debug.Print(viValue)
+                viIntB += 1
+            Else
+                Dim viValue As Long = viProbB * (1 + Math.Log(viCountB) + (viCountB - viIntB) * Math.Log(viCountB - viIntB) - (viCountB - viIntB + 1) * Math.Log(viCountB - viIntB + 1))
+                viListB.Add(viValue)
+                Debug.Print(viValue)
+                viIntB += 1
+            End If
+
+        Loop
+
+
     End Sub
 
     Private Sub picAPosition()
@@ -322,23 +417,25 @@ Public Class frmMatching2Opt
 
     End Sub
 
-    Private Sub ManualSchedChange()
+    Public Sub ManualSchedChange()
         If frmOptions.chkbxOptionsRandom.Checked = True Then
             Dim intCurrentCondition As Integer = CInt(Math.Floor(4 * Rnd())) + 1
-            If intCurrentCondition = 1 And Not lstCondition.contains(intCurrentCondition) Then
+            If intCurrentCondition = 1 And lstCondition.Contains(intCurrentCondition) Then
                 intCondition = 1
                 lstCondition.Remove(1)
-            ElseIf intCurrentCondition = 2 And Not lstCondition.Contains(intCurrentCondition) Then
+                conditionCount += 1
+            ElseIf intCurrentCondition = 2 And lstCondition.Contains(intCurrentCondition) Then
                 intCondition = 2
                 lstCondition.Remove(2)
-            ElseIf intCurrentCondition = 3 And Not lstCondition.Contains(intCurrentCondition) Then
+                conditionCount += 1
+            ElseIf intCurrentCondition = 3 And lstCondition.Contains(intCurrentCondition) Then
                 intCondition = 3
                 lstCondition.Remove(3)
-            ElseIf intCurrentCondition = 4 And Not lstCondition.Contains(intCurrentCondition) Then
+                conditionCount += 1
+            ElseIf intCurrentCondition = 4 And lstCondition.Contains(intCurrentCondition) Then
                 intCondition = CInt(Math.Floor(3 * Rnd())) + 1
                 lstCondition.Remove(4)
-            Else
-                ManualSchedChange()
+                conditionCount += 1
             End If
         ElseIf frmOptions.chkbxOptionsRandom.Checked = False Then
             intCondition += 1
@@ -348,13 +445,22 @@ Public Class frmMatching2Opt
                 Me.Close()
             End If
         End If
+        checkA()
+        checkB()
+
+        If conditionCount = 5 Then
+            tmr2OptMain.Enabled = False
+            MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+            Me.Close()
+        End If
     End Sub
 
     Private Sub frmMatching2Opt_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        btnOpt2Start.Visible = True
+        btnOpt2Start.Show()
+        frmStartUp.Show()
     End Sub
 
-    Private Sub ProgBarInitialize()
+    Public Sub ProgBarInitialize()
         If frmOptions.chkbxBackCount.Checked = False Then
             barOpt2.Minimum = 0
             barOpt2.Maximum = CInt(frmOptions.txtbxOptionsBarValue.Text)
