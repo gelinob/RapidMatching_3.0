@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmOptions
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,26 +20,11 @@ Partial Class frmOptions
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOptions))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pgeMatching2Opt = New System.Windows.Forms.TabPage()
-        Me.grpOptionsAutoSched = New System.Windows.Forms.GroupBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtOptionsIntOptD2Opt = New System.Windows.Forms.TextBox()
-        Me.txtOptionsIntOptC2Opt = New System.Windows.Forms.TextBox()
-        Me.txtOptionsIntOptB2Opt = New System.Windows.Forms.TextBox()
-        Me.txtOptionsIntOptA2Opt = New System.Windows.Forms.TextBox()
-        Me.txtOptionsVIOptD2Opt = New System.Windows.Forms.TextBox()
-        Me.txtOptionsVIOptC2Opt = New System.Windows.Forms.TextBox()
-        Me.txtOptionsVIOptB2Opt = New System.Windows.Forms.TextBox()
-        Me.txtOptionsVIOptA2Opt = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.chkbxOptionsRandom = New System.Windows.Forms.CheckBox()
         Me.chkbxSchedChange = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -65,9 +50,9 @@ Partial Class frmOptions
         Me.txtbxOptionsBarValue = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnOptionsOK = New System.Windows.Forms.Button()
+        Me.btnSchedules = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.pgeMatching2Opt.SuspendLayout()
-        Me.grpOptionsAutoSched.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.grpOptionsManSched.SuspendLayout()
         Me.pgeProgBar.SuspendLayout()
@@ -85,11 +70,11 @@ Partial Class frmOptions
         '
         'pgeMatching2Opt
         '
-        Me.pgeMatching2Opt.Controls.Add(Me.grpOptionsAutoSched)
+        Me.pgeMatching2Opt.Controls.Add(Me.grpOptionsManSched)
         Me.pgeMatching2Opt.Controls.Add(Me.chkbxOptionsRandom)
         Me.pgeMatching2Opt.Controls.Add(Me.chkbxSchedChange)
         Me.pgeMatching2Opt.Controls.Add(Me.GroupBox2)
-        Me.pgeMatching2Opt.Controls.Add(Me.grpOptionsManSched)
+        Me.pgeMatching2Opt.Controls.Add(Me.btnSchedules)
         Me.pgeMatching2Opt.Location = New System.Drawing.Point(4, 22)
         Me.pgeMatching2Opt.Name = "pgeMatching2Opt"
         Me.pgeMatching2Opt.Padding = New System.Windows.Forms.Padding(3)
@@ -97,155 +82,6 @@ Partial Class frmOptions
         Me.pgeMatching2Opt.TabIndex = 0
         Me.pgeMatching2Opt.Text = "Schedules"
         Me.pgeMatching2Opt.UseVisualStyleBackColor = True
-        '
-        'grpOptionsAutoSched
-        '
-        Me.grpOptionsAutoSched.Controls.Add(Me.Label6)
-        Me.grpOptionsAutoSched.Controls.Add(Me.Label7)
-        Me.grpOptionsAutoSched.Controls.Add(Me.txtOptionsIntOptD2Opt)
-        Me.grpOptionsAutoSched.Controls.Add(Me.txtOptionsIntOptC2Opt)
-        Me.grpOptionsAutoSched.Controls.Add(Me.txtOptionsIntOptB2Opt)
-        Me.grpOptionsAutoSched.Controls.Add(Me.txtOptionsIntOptA2Opt)
-        Me.grpOptionsAutoSched.Controls.Add(Me.txtOptionsVIOptD2Opt)
-        Me.grpOptionsAutoSched.Controls.Add(Me.txtOptionsVIOptC2Opt)
-        Me.grpOptionsAutoSched.Controls.Add(Me.txtOptionsVIOptB2Opt)
-        Me.grpOptionsAutoSched.Controls.Add(Me.txtOptionsVIOptA2Opt)
-        Me.grpOptionsAutoSched.Controls.Add(Me.Label8)
-        Me.grpOptionsAutoSched.Controls.Add(Me.Label9)
-        Me.grpOptionsAutoSched.Controls.Add(Me.Label10)
-        Me.grpOptionsAutoSched.Controls.Add(Me.Label11)
-        Me.grpOptionsAutoSched.Location = New System.Drawing.Point(6, 138)
-        Me.grpOptionsAutoSched.Name = "grpOptionsAutoSched"
-        Me.grpOptionsAutoSched.Size = New System.Drawing.Size(220, 142)
-        Me.grpOptionsAutoSched.TabIndex = 11
-        Me.grpOptionsAutoSched.TabStop = False
-        Me.grpOptionsAutoSched.Text = "Schedule Values"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(149, 20)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(69, 13)
-        Me.Label6.TabIndex = 1
-        Me.Label6.Text = "# of Intervals"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(82, 20)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(61, 13)
-        Me.Label7.TabIndex = 0
-        Me.Label7.Text = "VI Value (s)"
-        '
-        'txtOptionsIntOptD2Opt
-        '
-        Me.txtOptionsIntOptD2Opt.Location = New System.Drawing.Point(161, 111)
-        Me.txtOptionsIntOptD2Opt.Name = "txtOptionsIntOptD2Opt"
-        Me.txtOptionsIntOptD2Opt.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptionsIntOptD2Opt.TabIndex = 13
-        Me.txtOptionsIntOptD2Opt.Text = "10"
-        Me.txtOptionsIntOptD2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtOptionsIntOptC2Opt
-        '
-        Me.txtOptionsIntOptC2Opt.Location = New System.Drawing.Point(161, 88)
-        Me.txtOptionsIntOptC2Opt.Name = "txtOptionsIntOptC2Opt"
-        Me.txtOptionsIntOptC2Opt.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptionsIntOptC2Opt.TabIndex = 10
-        Me.txtOptionsIntOptC2Opt.Text = "10"
-        Me.txtOptionsIntOptC2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtOptionsIntOptB2Opt
-        '
-        Me.txtOptionsIntOptB2Opt.Location = New System.Drawing.Point(161, 65)
-        Me.txtOptionsIntOptB2Opt.Name = "txtOptionsIntOptB2Opt"
-        Me.txtOptionsIntOptB2Opt.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptionsIntOptB2Opt.TabIndex = 7
-        Me.txtOptionsIntOptB2Opt.Text = "10"
-        Me.txtOptionsIntOptB2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtOptionsIntOptA2Opt
-        '
-        Me.txtOptionsIntOptA2Opt.Location = New System.Drawing.Point(161, 41)
-        Me.txtOptionsIntOptA2Opt.Name = "txtOptionsIntOptA2Opt"
-        Me.txtOptionsIntOptA2Opt.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptionsIntOptA2Opt.TabIndex = 4
-        Me.txtOptionsIntOptA2Opt.Text = "10"
-        Me.txtOptionsIntOptA2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtOptionsVIOptD2Opt
-        '
-        Me.txtOptionsVIOptD2Opt.Location = New System.Drawing.Point(92, 111)
-        Me.txtOptionsVIOptD2Opt.Name = "txtOptionsVIOptD2Opt"
-        Me.txtOptionsVIOptD2Opt.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptionsVIOptD2Opt.TabIndex = 12
-        Me.txtOptionsVIOptD2Opt.Text = "40"
-        Me.txtOptionsVIOptD2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtOptionsVIOptC2Opt
-        '
-        Me.txtOptionsVIOptC2Opt.Location = New System.Drawing.Point(92, 88)
-        Me.txtOptionsVIOptC2Opt.Name = "txtOptionsVIOptC2Opt"
-        Me.txtOptionsVIOptC2Opt.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptionsVIOptC2Opt.TabIndex = 9
-        Me.txtOptionsVIOptC2Opt.Text = "30"
-        Me.txtOptionsVIOptC2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtOptionsVIOptB2Opt
-        '
-        Me.txtOptionsVIOptB2Opt.Location = New System.Drawing.Point(92, 65)
-        Me.txtOptionsVIOptB2Opt.Name = "txtOptionsVIOptB2Opt"
-        Me.txtOptionsVIOptB2Opt.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptionsVIOptB2Opt.TabIndex = 6
-        Me.txtOptionsVIOptB2Opt.Text = "20"
-        Me.txtOptionsVIOptB2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txtOptionsVIOptA2Opt
-        '
-        Me.txtOptionsVIOptA2Opt.Location = New System.Drawing.Point(92, 41)
-        Me.txtOptionsVIOptA2Opt.Name = "txtOptionsVIOptA2Opt"
-        Me.txtOptionsVIOptA2Opt.Size = New System.Drawing.Size(40, 20)
-        Me.txtOptionsVIOptA2Opt.TabIndex = 3
-        Me.txtOptionsVIOptA2Opt.Text = "10"
-        Me.txtOptionsVIOptA2Opt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 113)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(66, 13)
-        Me.Label8.TabIndex = 11
-        Me.Label8.Text = "Schedule D:"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(6, 90)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(65, 13)
-        Me.Label9.TabIndex = 8
-        Me.Label9.Text = "Schedule C:"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(6, 67)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(65, 13)
-        Me.Label10.TabIndex = 5
-        Me.Label10.Text = "Schedule B:"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(6, 44)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(65, 13)
-        Me.Label11.TabIndex = 2
-        Me.Label11.Text = "Schedule A:"
         '
         'chkbxOptionsRandom
         '
@@ -498,6 +334,15 @@ Partial Class frmOptions
         Me.btnOptionsOK.Text = "OK"
         Me.btnOptionsOK.UseVisualStyleBackColor = True
         '
+        'btnSchedules
+        '
+        Me.btnSchedules.Location = New System.Drawing.Point(79, 142)
+        Me.btnSchedules.Name = "btnSchedules"
+        Me.btnSchedules.Size = New System.Drawing.Size(75, 35)
+        Me.btnSchedules.TabIndex = 16
+        Me.btnSchedules.Text = "Edit Schedules"
+        Me.btnSchedules.UseVisualStyleBackColor = True
+        '
         'frmOptions
         '
         Me.AcceptButton = Me.btnOptionsOK
@@ -506,16 +351,16 @@ Partial Class frmOptions
         Me.ClientSize = New System.Drawing.Size(339, 334)
         Me.Controls.Add(Me.btnOptionsOK)
         Me.Controls.Add(Me.TabControl1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmOptions"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Options"
         Me.TabControl1.ResumeLayout(False)
         Me.pgeMatching2Opt.ResumeLayout(False)
         Me.pgeMatching2Opt.PerformLayout()
-        Me.grpOptionsAutoSched.ResumeLayout(False)
-        Me.grpOptionsAutoSched.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.grpOptionsManSched.ResumeLayout(False)
@@ -553,19 +398,5 @@ Partial Class frmOptions
     Friend WithEvents Label5 As Label
     Friend WithEvents chkbxBackCount As CheckBox
     Friend WithEvents chkbxOptionsRandom As CheckBox
-    Friend WithEvents grpOptionsAutoSched As GroupBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents txtOptionsIntOptD2Opt As TextBox
-    Friend WithEvents txtOptionsIntOptC2Opt As TextBox
-    Friend WithEvents txtOptionsIntOptB2Opt As TextBox
-    Friend WithEvents txtOptionsIntOptA2Opt As TextBox
-    Friend WithEvents txtOptionsVIOptD2Opt As TextBox
-    Friend WithEvents txtOptionsVIOptC2Opt As TextBox
-    Friend WithEvents txtOptionsVIOptB2Opt As TextBox
-    Friend WithEvents txtOptionsVIOptA2Opt As TextBox
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label9 As Label
-    Friend WithEvents Label10 As Label
-    Friend WithEvents Label11 As Label
+    Friend WithEvents btnSchedules As Button
 End Class

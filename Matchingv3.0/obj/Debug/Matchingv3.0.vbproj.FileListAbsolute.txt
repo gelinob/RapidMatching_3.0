@@ -18,3 +18,4 @@ C:\Users\Known Guest\Documents\Visual Studio 2015\Projects\Matchingv3.0\bin\Debu
 C:\Users\Known Guest\Documents\Visual Studio 2015\Projects\Matchingv3.0\bin\Debug\Matchingv3.0.application
 C:\Users\Known Guest\Documents\Visual Studio 2015\Projects\Matchingv3.0\obj\Debug\Matchingv3.0.exe.manifest
 C:\Users\Known Guest\Documents\Visual Studio 2015\Projects\Matchingv3.0\obj\Debug\Matchingv3.0.application
+C:\Users\Known Guest\Documents\Visual Studio 2015\Projects\Matchingv3.0\obj\Debug\Matchingv3._0.frmSchedules.resources

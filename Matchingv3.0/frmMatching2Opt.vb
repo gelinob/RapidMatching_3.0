@@ -235,26 +235,43 @@ Public Class frmMatching2Opt
                 barOpt2.Value -= 1
             End If
             ' If the progress bar is at the specified threshold...
-            If barOpt2.Value = barOpt2.Maximum Then
-                ' Prompt user and stop session timer.
-                tmr2OptMain.Enabled = False
-                If frmOptions.chkbxSchedChange.Checked = True Then
-                    MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                    Me.Close()
-                ElseIf frmOptions.chkbxSchedChange.Checked = False Then
-                    If intCondition = 4 Then
+            If frmOptions.chkbxBackCount.Checked = False Then
+                If barOpt2.Value = barOpt2.Maximum Then
+                    ' Prompt user and stop session timer.
+                    tmr2OptMain.Enabled = False
+                    If frmOptions.chkbxSchedChange.Checked = True Then
                         MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                         Me.Close()
-                    Else
-                        frmBlackOutOpt2.ShowDialog()
+                    ElseIf frmOptions.chkbxSchedChange.Checked = False Then
+                        If intCondition = 4 Then
+                            MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                            Me.Close()
+                        Else
+                            frmBlackOutOpt2.ShowDialog()
+                        End If
                     End If
-                End If
                 Else
-                    ' If the progress bar was NOT at the specified theshold...
-                    ' Set a new schedule value for the button.
                     checkA()
-                ' Reset the button's timer.
-                TimeA = 0
+                    TimeA = 0
+                End If
+            ElseIf frmOptions.chkbxBackCount.Checked = True Then
+                If barOpt2.Value = barOpt2.Minimum Then
+                    tmr2OptMain.Enabled = False
+                    If frmOptions.chkbxSchedChange.Checked = True Then
+                        MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                        Me.Close()
+                    ElseIf frmOptions.chkbxSchedChange.Checked = False Then
+                        If intCondition = 4 Then
+                            MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                            Me.Close()
+                        Else
+                            frmBlackOutOpt2.ShowDialog()
+                        End If
+                    End If
+                Else
+                    checkA()
+                    TimeA = 0
+                End If
             End If
         End If
     End Sub
@@ -268,22 +285,42 @@ Public Class frmMatching2Opt
             ElseIf frmOptions.chkbxBackCount.Checked = True Then
                 barOpt2.Value -= 1
             End If
-            tmr2OptMain.Enabled = False
-            If barOpt2.Value = barOpt2.Maximum Then
-                If frmOptions.chkbxSchedChange.Checked = True Then
-                    MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                    Me.Close()
-                ElseIf frmOptions.chkbxSchedChange.Checked = False Then
-                    If intCondition = 4 Then
+            If frmOptions.chkbxBackCount.Checked = False Then
+                If barOpt2.Value = barOpt2.Maximum Then
+                    tmr2OptMain.Enabled = False
+                    If frmOptions.chkbxSchedChange.Checked = True Then
                         MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                         Me.Close()
-                    Else
-                        frmBlackOutOpt2.ShowDialog()
+                    ElseIf frmOptions.chkbxSchedChange.Checked = False Then
+                        If intCondition = 4 Then
+                            MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                            Me.Close()
+                        Else
+                            frmBlackOutOpt2.ShowDialog()
+                        End If
                     End If
+                Else
+                    checkB()
+                    TimeB = 0
                 End If
-            Else
-                checkB()
-                TimeB = 0
+            ElseIf frmOptions.chkbxBackCount.Checked = True Then
+                If barOpt2.Value = barOpt2.Minimum Then
+                    tmr2OptMain.Enabled = False
+                    If frmOptions.chkbxSchedChange.Checked = True Then
+                        MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                        Me.Close()
+                    ElseIf frmOptions.chkbxSchedChange.Checked = False Then
+                        If intCondition = 4 Then
+                            MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                            Me.Close()
+                        Else
+                            frmBlackOutOpt2.ShowDialog()
+                        End If
+                    End If
+                Else
+                    checkB()
+                    TimeB = 0
+                End If
             End If
         End If
     End Sub
@@ -294,8 +331,8 @@ Public Class frmMatching2Opt
         Dim viCountA As New Integer 'N
 
         viIntA = 1
-        viCountA = CInt(frmOptions.txtOptionsIntOptA2Opt.Text)
-        viProbA = CInt(frmOptions.txtOptionsVIOptA2Opt.Text)
+        viCountA = CInt(frmSchedules.txtIntOptAPh1.Text)
+        viProbA = CInt(frmSchedules.txtVIOptAPh1.Text)
 
         Do While viIntA <= viCountA
             If viIntA = viCountA Then
@@ -320,8 +357,8 @@ Public Class frmMatching2Opt
         Dim viCountB As New Integer 'N
 
         viIntB = 1
-        viCountB = CInt(frmOptions.txtOptionsIntOptB2Opt.Text)
-        viProbB = CInt(frmOptions.txtOptionsVIOptB2Opt.Text)
+        viCountB = CInt(frmSchedules.txtIntOptBPh1.Text)
+        viProbB = CInt(frmSchedules.txtIntOptBPh1.Text)
 
         Do While viIntB <= viCountB
             If viIntB = viCountB Then
