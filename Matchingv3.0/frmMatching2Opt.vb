@@ -68,16 +68,12 @@ Public Class frmMatching2Opt
         CreateConditionList()
 
         ' Call random number generation functions (below).
-        If frmOptions.rdioOptionsManSched.Checked = True AndAlso frmOptions.chkbxSchedChange.Checked = True Then
+        If frmOptions.chkbxSchedChange.Checked = True Then
             randCondition()
         End If
 
         ' Set initial condition.
-        If frmOptions.chkbxOptionsRandom.Checked = True Then
-            SchedChange()
-        Else
-            intCondition = 1
-        End If
+        SchedChange()
 
         If frmOptions.rdioOptionsAutoSched.Checked = True Then
             picA_FHSched()
@@ -91,7 +87,7 @@ Public Class frmMatching2Opt
 
     Private Sub randCondition()
         ' Generate random number representing time (in seconds) prior to schedule switch.
-        intRandCond = CInt(Math.Floor(120 - 20 + 1) * Rnd()) + 20
+        intRandCond = CInt(Math.Floor(30 - 10 + 1) * Rnd()) + 10
     End Sub
     Private Sub randPicA()
         ' Generate random number representing time (in seconds) prior to changing position of A response.
@@ -105,7 +101,7 @@ Public Class frmMatching2Opt
     Private Sub ConditionCheck()
         ' If the random condition timer is beyond the random value threshold, pick new random condition and reset schedule values.
         If intConditionTime >= intRandCond Then
-            intCondition = CInt(Math.Floor(3 * Rnd())) + 1
+            SchedChange()
             checkA()
             checkB()
             intConditionTime = 0
@@ -131,7 +127,6 @@ Public Class frmMatching2Opt
             Dim viValue_A As New Long
 
             randVI_A = CInt(Math.Floor((viListA.Count - 1) * Rnd())) 'Minimum is zero, maximum is (range - 1)
-            Debug.Print(randVI_A & " " & viListA.Count)
             viValue_A = viListA.Item(randVI_A)
             intRandA = viValue_A
             viListA.Remove(viValue_A)
@@ -155,7 +150,6 @@ Public Class frmMatching2Opt
             Dim viValue_B As New Long
 
             randVI_B = CInt(Math.Floor((viListB.Count - 1) * Rnd()))
-            Debug.Print(randVI_B)
             viValue_B = viListB.Item(randVI_B)
             intRandB = viValue_B
             viListB.Remove(viValue_B)
@@ -242,51 +236,25 @@ Public Class frmMatching2Opt
                     ' Prompt user and stop session timer.
                     tmr2OptMain.Enabled = False
                     ' If on a time-based interval:
-                    If frmOptions.chkbxSchedChange.Checked = True Then
-                        If frmOptions.chkbxOptionsRandom.Checked Then
-                            MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                            Me.Close()
-                            ' if on a ratio schedule:
-                        End If
-                    ElseIf frmOptions.chkbxSchedChange.Checked = False Then
-                        If frmOptions.chkbxOptionsRandom.Checked = False Then
-                            If intCondition = 4 Then
-                                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                                Me.Close()
-                            End If
-                        ElseIf frmOptions.chkbxOptionsRandom.Checked = True Then
-                            If lstCondition.Count > 0 Then
-                                frmBlackOutOpt2.ShowDialog()
-                            ElseIf lstCondition.Count = 0 Then
-                                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                                Me.Close()
-                            End If
-                        End If
-                    Else
-                        checkA()
-                        TimeA = 0
+
+                    If lstCondition.Count > 0 Then
+                        frmBlackOutOpt2.ShowDialog()
+                    ElseIf lstCondition.Count = 0 Then
+                        MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
+                        Me.Close()
                     End If
+                Else
+                    checkA()
+                    TimeA = 0
                 End If
             ElseIf frmOptions.chkbxBackCount.Checked = True Then
                 If barOpt2.Value = barOpt2.Minimum Then
                     tmr2OptMain.Enabled = False
-                    If frmOptions.chkbxSchedChange.Checked = True Then
+                    If lstCondition.Count > 0 Then
+                        frmBlackOutOpt2.ShowDialog()
+                    ElseIf lstCondition.Count = 0 Then
                         MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                         Me.Close()
-                    ElseIf frmOptions.chkbxSchedChange.Checked = False Then
-                        If frmOptions.chkbxOptionsRandom.Checked = False Then
-                            If intCondition = 4 Then
-                                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                                Me.Close()
-                            End If
-                        ElseIf frmOptions.chkbxOptionsRandom.Checked = True Then
-                            If lstCondition.Count > 0 Then
-                                frmBlackOutOpt2.ShowDialog()
-                            ElseIf lstCondition.Count = 0 Then
-                                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                                Me.Close()
-                            End If
-                        End If
                     End If
                 Else
                     checkA()
@@ -308,23 +276,11 @@ Public Class frmMatching2Opt
             If frmOptions.chkbxBackCount.Checked = False Then
                 If barOpt2.Value = barOpt2.Maximum Then
                     tmr2OptMain.Enabled = False
-                    If frmOptions.chkbxSchedChange.Checked = True Then
+                    If lstCondition.Count > 0 Then
+                        frmBlackOutOpt2.ShowDialog()
+                    ElseIf lstCondition.Count = 0 Then
                         MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                         Me.Close()
-                    ElseIf frmOptions.chkbxSchedChange.Checked = False Then
-                        If frmOptions.chkbxOptionsRandom.Checked = False Then
-                            If intCondition = 4 Then
-                                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                                Me.Close()
-                            End If
-                        ElseIf frmOptions.chkbxOptionsRandom.Checked = True Then
-                            If lstCondition.Count > 0 Then
-                                frmBlackOutOpt2.ShowDialog()
-                            ElseIf lstCondition.Count = 0 Then
-                                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                                Me.Close()
-                            End If
-                        End If
                     End If
                 Else
                     checkB()
@@ -333,24 +289,13 @@ Public Class frmMatching2Opt
             ElseIf frmOptions.chkbxBackCount.Checked = True Then
                 If barOpt2.Value = barOpt2.Minimum Then
                     tmr2OptMain.Enabled = False
-                    If frmOptions.chkbxSchedChange.Checked = True Then
+                    If lstCondition.Count > 0 Then
+                        frmBlackOutOpt2.ShowDialog()
+                    ElseIf lstCondition.Count = 0 Then
                         MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                         Me.Close()
-                    ElseIf frmOptions.chkbxSchedChange.Checked = False Then
-                        If frmOptions.chkbxOptionsRandom.Checked = False Then
-                            If intCondition = 4 Then
-                                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                                Me.Close()
-                            End If
-                        ElseIf frmOptions.chkbxOptionsRandom.Checked = True Then
-                            If lstCondition.Count > 0 Then
-                                frmBlackOutOpt2.ShowDialog()
-                            ElseIf lstCondition.Count = 0 Then
-                                MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-                                Me.Close()
-                            End If
-                        End If
                     End If
+
                 Else
                     checkB()
                     TimeB = 0
@@ -519,7 +464,6 @@ Public Class frmMatching2Opt
     Public Sub SchedChange()
         If frmOptions.chkbxOptionsRandom.Checked = True Then
             Dim intCurrentCondition As Integer = CInt(Math.Floor(4 * Rnd())) + 1
-            Debug.Print("Rand # " & intCurrentCondition)
             If lstCondition.Contains("1") = True AndAlso intCurrentCondition = 1 Then
                 intCondition = 1
                 lstCondition.Remove("1")
@@ -554,7 +498,7 @@ Public Class frmMatching2Opt
             If intCondition = 5 Then
                 tmr2OptMain.Enabled = False
                 MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
-        Me.Close()
+                Me.Close()
             End If
             picA_FHSched()
             picB_FHSched()

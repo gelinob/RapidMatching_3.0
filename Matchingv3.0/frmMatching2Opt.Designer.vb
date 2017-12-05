@@ -235,6 +235,7 @@ Partial Class frmMatching2Opt
         '
         'frmMatching2Opt
         '
+        Me.AcceptButton = Me.btnOpt2Start
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(750, 463)
