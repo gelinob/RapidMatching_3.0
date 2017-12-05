@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Matchingv3.0.exe" size="144344">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Matchingv3.0.exe" size="146904">
       <assemblyIdentity name="Matchingv3.0" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fdf88qF04h+t/uqLsNwVyThXAK58IzZTP2VY+4x6+mM=</dsig:DigestValue>
+        <dsig:DigestValue>ZaZVO68Kzpyz3sHjsDE6FQgt4VpTicSeGUAdD7KpNlY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

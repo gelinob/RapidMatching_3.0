@@ -22,10 +22,11 @@
             intBlackOut = 0
             tmrBlackOutOpt2.Enabled = False
             frmMatching2Opt.tmr2OptMain.Enabled = True
-            frmMatching2Opt.ManualSchedChange()
+            frmMatching2Opt.SchedChange()
             frmMatching2Opt.ProgBarInitialize()
             frmMatching2Opt.TimeA = 0
             frmMatching2Opt.TimeB = 0
+            Debug.Print("Phase " & CStr(frmMatching2Opt.intCondition))
             Me.Close()
         End If
     End Sub

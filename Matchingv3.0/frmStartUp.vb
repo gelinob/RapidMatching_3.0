@@ -4,7 +4,6 @@
         If IsNumeric(txtCODDuration.Text) = True AndAlso CInt(txtCODDuration.Text) >= 0 Then
             If rdio2Opt.Checked = True Then
                 frmMatching2Opt.ShowDialog()
-            ElseIf rdio2Opt.Checked = True Then
             End If
         Else
             MessageBox.Show("Please enter a valid numeric value for points required.")
