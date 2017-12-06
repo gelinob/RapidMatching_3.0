@@ -3,12 +3,16 @@ Imports VB = Microsoft.VisualBasic
 
 Public Class frmMatching2Opt
 
+    ' ##Create variables to be used throughout the procedure##
+
+    ' Create variables to hold VI value for various components.
     Public intRandA As Integer
     Public intRandB As Integer
     Public intRandCond As Integer
     Public intRandPicA As Integer
     Public intRandPicB As Integer
 
+    ' Create variables to track count of various components.
     Public intCountA As Integer
     Public intCountB As Integer
     Public CODCount As Integer
@@ -17,8 +21,10 @@ Public Class frmMatching2Opt
     Public schedCount As Integer
     Public conditionCount As Integer
 
+    ' Create variable to set the current condition.
     Public intCondition As Integer
 
+    ' Create variables to track time passed for various components.
     Public intConditionTime As Integer
     Public TimeA As Integer
     Public TimeB As Integer
@@ -27,15 +33,21 @@ Public Class frmMatching2Opt
     Public TimePicA As Integer
     Public TimePicB As Integer
 
+    ' Create list to hold generate FH VI values.
     Public viListA As New List(Of Long)
     Public viListB As New List(Of Long)
 
+    ' Create list to hold condition values to prevent repetition of condition presentation.
     Public lstCondition As New List(Of Integer)
 
     Private Sub frmMatching2Opt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        ' ##Events to occur when session panel first loads##
+
+        ' Hide initial startup form.
         frmStartUp.Hide()
 
-        ' Determine progress bar length and starting place.
+        ' Determine progress bar features and initialize (see sub).
         ProgBarInitialize()
 
         ' Hide buttons/timer prior to starting session.
@@ -53,21 +65,27 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub btnOpt2Start_Click(sender As Object, e As EventArgs) Handles btnOpt2Start.Click
-        'Show functional buttons after start of session.
-        btnOpt2A.Visible = True
-        btnOpt2B.Visible = True
+
+        ' ##Functions that occur when session starts##
+
+        ' Show label that holds value of timer, subsequently starting time (see sub for Tick events).
         lbl2OptTimer.Visible = True
 
         ' Hide start button.
         btnOpt2Start.Visible = False
 
-        ' Initial VB random function (for VI schedules) and start timer.
+        'Show functional buttons.
+        btnOpt2A.Visible = True
+        btnOpt2B.Visible = True
+
+        ' Initialize VB random function and start timer.
         Randomize()
         tmr2OptMain.Enabled = True
 
+        ' Populate condition list with appropriate condition values (see sub).
         CreateConditionList()
 
-        ' Call random number generation functions (below).
+        ' If conditions change based on random time schedules, generate random condition length (see sub).
         If frmOptions.chkbxSchedChange.Checked = True Then
             randCondition()
         End If
@@ -75,18 +93,11 @@ Public Class frmMatching2Opt
         ' Set initial condition.
         SchedChange()
 
-        If frmOptions.rdioOptionsAutoSched.Checked = True Then
-            picA_FHSched()
-            picB_FHSched()
-        End If
-
-        checkA()
-        checkB()
-
     End Sub
 
     Private Sub randCondition()
-        ' Generate random number representing time (in seconds) prior to schedule switch.
+        ' Generate random number representing condition duration.
+        ' ~~ Should individuals be able to set this value? ~~
         intRandCond = CInt(Math.Floor(30 - 10 + 1) * Rnd()) + 10
     End Sub
     Private Sub randPicA()
@@ -98,19 +109,25 @@ Public Class frmMatching2Opt
         intRandPicB = CInt(Math.Floor(8 - 2 + 1) * Rnd()) + 2
     End Sub
 
-    Private Sub ConditionCheck()
-        ' If the random condition timer is beyond the random value threshold, pick new random condition and reset schedule values.
+    Private Sub ConditionTimeCheck()
+        ' If the condition time meets the random thresholdfor change:
         If intConditionTime >= intRandCond Then
+            ' Update current condition
             SchedChange()
-            checkA()
-            checkB()
+            ' Update schedules based on new condition
+            SchedValuesA()
+            SchedValuesB()
+            ' Reset current elapsed time to zero.
             intConditionTime = 0
+            ' Update count of schedule changes.
             schedCount += 1
+            ' Generate new random length for selected condition.
             randCondition()
         End If
     End Sub
 
-    Private Sub checkA()
+    Private Sub SchedValuesA()
+        ' Update schedule values for button depending on condition and type of schedule generation.
         If frmOptions.rdioOptionsManSched.Checked = True Then
             If intCondition = 1 Then
                 'Generate a random schedule value within parameters for condition.
@@ -126,6 +143,7 @@ Public Class frmMatching2Opt
             Dim randVI_A As New Integer
             Dim viValue_A As New Long
 
+            ' Randomly select one of the FH values from the option A list. Remove that value to prevent repetition.
             randVI_A = CInt(Math.Floor((viListA.Count - 1) * Rnd())) 'Minimum is zero, maximum is (range - 1)
             viValue_A = viListA.Item(randVI_A)
             intRandA = viValue_A
@@ -134,7 +152,7 @@ Public Class frmMatching2Opt
         End If
     End Sub
 
-    Private Sub checkB()
+    Private Sub SchedValuesB()
         If frmOptions.rdioOptionsManSched.Checked = True Then
             If intCondition = 1 Then
                 intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedBMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
@@ -158,6 +176,7 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub btnOpt2A_Click(sender As Object, e As EventArgs) Handles btnOpt2A.Click
+        ' If button is selected, hide both buttons and reveal response item for selected side. Make COD button visible.
         btnOpt2A.Visible = False
         btnOpt2B.Visible = False
         grpOptA2Opt.Visible = True
@@ -174,31 +193,40 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub btnOpt2Log_Click(sender As Object, e As EventArgs) Handles btnOpt2Log.Click
+        ' If the log is visible, hide it.
         If frmOpt2Log.Visible = True Then
             frmOpt2Log.Hide()
+            ' If the log is hidden, show it.
         ElseIf frmOpt2Log.Visible = False Then
             frmOpt2Log.Show()
         End If
     End Sub
 
     Private Sub tmr2OptMain_Tick(sender As Object, e As EventArgs) Handles tmr2OptMain.Tick
-        ' If COD NOT in effect, run schedule timers.
+        ' If COD NOT in effect:
         If frmCODOpt2.tmrCODOpt2.Enabled = False Then
+            ' Update border based on condition number.
             BorderStatus()
+            ' Update phase label text and color based on condition number.
             PhaseStatus()
+            ' Increase value of variables recording time.
             TimeA += 1
             TimeB += 1
             TimePicA += 1
             TimePicB += 1
+            ' Update location of picture response options based on randomly selected locations (see sub).
             picAPosition()
             picBPosition()
+            ' If schedules set to change based on random timer:
             If frmOptions.chkbxSchedChange.Checked = True Then
+                ' Increase value of variable recording condition time elapsed.
                 intConditionTime += 1
-                ConditionCheck()
+                ' Check to determine time elapsed relative to preset condition duration.
+                ConditionTimeCheck()
             End If
         End If
 
-        ' If only one button is enabled, and thus an option has been selected, initial timer to record time allocated to each response option.
+        ' If only one button is enabled, and thus an option has been selected, initialize timer to record time allocated to each response option.
         If grpOptA2Opt.Visible = True And grpOptB2Opt.Visible = False Then
             TimeCountA += 1
         ElseIf grpOptB2Opt.Visible = True And grpOptA2Opt.Visible = False Then
@@ -219,34 +247,39 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub picOptA2Opt_Click(sender As Object, e As EventArgs) Handles picOptA2Opt.Click
+        ' Increase value of variable recording number of responses on picture response option.
         intCountA += 1
-        ' If amount of time specified with random integer has passed...
+        ' If VI schedule satisfied:
         If TimeA >= intRandA Then
-            ' Document time at which the point was earned.
+            ' Document time at which the reinforcer is earned.
             frmOpt2Log.DocumentA()
-            ' Advance the progress bar.
+            ' Advance the progress bar in the correct direction.
             If frmOptions.chkbxBackCount.Checked = False Then
                 barOpt2.Value += 1
             ElseIf frmOptions.chkbxBackCount.Checked = True Then
                 barOpt2.Value -= 1
             End If
-            ' If the progress bar is at the specified threshold...
+            ' If the progress bar is at the specified threshold for counting up:
             If frmOptions.chkbxBackCount.Checked = False Then
                 If barOpt2.Value = barOpt2.Maximum Then
-                    ' Prompt user and stop session timer.
+                    ' Stop session timer.
                     tmr2OptMain.Enabled = False
-                    ' If on a time-based interval:
-
+                    ' If items remain on the condition list
                     If lstCondition.Count > 0 Then
+                        ' Show blackout form (see form).
                         frmBlackOutOpt2.ShowDialog()
+                        ' Else if all conditions have been presented.
                     ElseIf lstCondition.Count = 0 Then
+                        ' Prompt user and end condition.
                         MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                         Me.Close()
                     End If
+                    ' If the progress bar is NOT at the threshold, update schedule value and reset current time elapsed to zero.
                 Else
-                    checkA()
+                    SchedValuesA()
                     TimeA = 0
                 End If
+                ' Same procedure as above, but for progress bar counting down.
             ElseIf frmOptions.chkbxBackCount.Checked = True Then
                 If barOpt2.Value = barOpt2.Minimum Then
                     tmr2OptMain.Enabled = False
@@ -257,7 +290,7 @@ Public Class frmMatching2Opt
                         Me.Close()
                     End If
                 Else
-                    checkA()
+                    SchedValuesA()
                     TimeA = 0
                 End If
             End If
@@ -283,7 +316,7 @@ Public Class frmMatching2Opt
                         Me.Close()
                     End If
                 Else
-                    checkB()
+                    SchedValuesB()
                     TimeB = 0
                 End If
             ElseIf frmOptions.chkbxBackCount.Checked = True Then
@@ -297,7 +330,7 @@ Public Class frmMatching2Opt
                     End If
 
                 Else
-                    checkB()
+                    SchedValuesB()
                     TimeB = 0
                 End If
             End If
@@ -305,15 +338,20 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub picA_FHSched()
+        ' ##Function generates FH values and populates respective list.##
 
+        ' Clear any existing values from list.
         viListA.Clear()
 
+        ' Create variables to represent those in the FH equation.
         Dim viProbA As New Integer 'P
         Dim viIntA As New Integer 'n
         Dim viCountA As New Integer 'N
 
+        ' Set value recording the number of values generated to 1. See below.
         viIntA = 1
 
+        ' Depending on the current condition, set equation values to those specified in options form.
         If intCondition = 1 Then
             viCountA = CInt(frmSchedules.txtIntOptAPh1.Text)
             viProbA = CInt(frmSchedules.txtVIOptAPh1.Text)
@@ -327,6 +365,8 @@ Public Class frmMatching2Opt
             Condition4()
             Exit Sub
         End If
+
+        ' As long as the number of items created is less than or equal to the desired number, run the components of the equation to generate values, then add them to list
         Do While viIntA <= viCountA
             If viIntA = viCountA Then
                 Dim viValue As Long = viProbA * (1 + Math.Log(viCountA))
@@ -386,13 +426,17 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub picAPosition()
+        ' If the randomly generated duration of picture location reaches the threshold:
         If TimePicA >= intRandPicA Then
+            ' Create new random values for X and Y coordinates (upper left corner) that are constrained to the group box container.
             Dim OptAx As Integer = Math.Floor((grpOptA2Opt.Width - picOptA2Opt.Width) * Rnd())
             Dim OptAy As Integer = Math.Floor((grpOptA2Opt.Height - picOptB2Opt.Height) * Rnd())
 
+            ' Set picture location to new coordinates.
             picOptA2Opt.Left = OptAx
             picOptA2Opt.Top = OptAy
 
+            ' Reset timer and generate new duration for current picture response option location.
             TimePicA = 0
             randPicA()
         End If
@@ -412,6 +456,7 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub grpOptA2Opt_Click(sender As Object, e As EventArgs) Handles grpOptA2Opt.Click
+        ' If the user misses the picture response option and clicks the group box background instead, increase miss count by 1.
         missCountA += 1
     End Sub
 
@@ -420,6 +465,7 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub BorderStatus()
+        ' ##Creates a colored border around the greater group box that corresponds to the current condition. Refreshed every timer tick.##
         Dim rectBorder As System.Drawing.Graphics
         rectBorder = Me.grpControlBox2Opt.CreateGraphics()
         If intCondition = 1 Then
@@ -438,6 +484,7 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub PhaseStatus()
+        ' ##Changes the text and color of the phase label, depending on the current condition. Updates every timer tick.##
         If intCondition = 1 Then
             lblPhase2Opt.Text = "Phase 1"
             lblPhase2Opt.ForeColor = System.Drawing.Color.Green
@@ -454,6 +501,7 @@ Public Class frmMatching2Opt
     End Sub
 
     Public Sub CreateConditionList()
+        ' ##Generates values for each condition and adds them to a list, to be pulled from in later events.##
         lstCondition.Add("1")
         lstCondition.Add("2")
         lstCondition.Add("3")
@@ -462,13 +510,23 @@ Public Class frmMatching2Opt
     End Sub
 
     Public Sub SchedChange()
+        ' ##Updates the condition based on the selected method of progression.##
+
+        ' If conditions are to progress in random order:
         If frmOptions.chkbxOptionsRandom.Checked = True Then
+            ' Generate a random value between 1 and 4
             Dim intCurrentCondition As Integer = CInt(Math.Floor(4 * Rnd())) + 1
+            ' If the list contains the selected number:
             If lstCondition.Contains("1") = True AndAlso intCurrentCondition = 1 Then
+                ' Set the current condition to that value.
                 intCondition = 1
+                ' Remove the value from the list to prevent future repetition.
                 lstCondition.Remove("1")
+                ' Increase the count of condition changes by 1.
                 conditionCount += 1
+                ' If values are generated automatically:
                 If frmOptions.rdioOptionsAutoSched.Checked = True Then
+                    ' Initiate FH value generation.
                     picA_FHSched()
                     picB_FHSched()
                 End If
@@ -491,22 +549,31 @@ Public Class frmMatching2Opt
             ElseIf lstCondition.Contains("4") = True AndAlso intCurrentCondition = 4 Then
                 Condition4()
             Else
+                ' If the generated value has already been used, generate new value.
                 SchedChange()
             End If
         ElseIf frmOptions.chkbxOptionsRandom.Checked = False Then
+            ' If conditions do NOT progress in a random order, advance to the next numerically-valued condition.
             intCondition += 1
+            ' If condition count reaches 5, stop the timer, prompt the user, and end the session
             If intCondition = 5 Then
                 tmr2OptMain.Enabled = False
                 MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
                 Me.Close()
             End If
-            picA_FHSched()
-            picB_FHSched()
+            ' If schedules are automatically generated, initiate respective subs.
+            If frmOptions.rdioOptionsAutoSched.Checked = True Then
+                picA_FHSched()
+                picB_FHSched()
+            End If
         End If
-        checkA()
-        checkB()
+
+        ' Update schedule values based on selected condition.
+        SchedValuesA()
+        SchedValuesB()
 
         If conditionCount = 5 Then
+            ' If 4 conditions have passed, stop timer, prompt user, and end session.
             tmr2OptMain.Enabled = False
             MessageBox.Show("You've earned all points! Time to completion: " & lbl2OptTimer.Text & " s", "Nice Work!", 0)
             Me.Close()
@@ -514,13 +581,13 @@ Public Class frmMatching2Opt
     End Sub
 
     Private Sub frmMatching2Opt_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        tmr2OptMain.Enabled = False
-        btnOpt2Start.Show()
+        ' When closing session window, show the startup form and reset session form.
         frmStartUp.Show()
         Me.Dispose()
     End Sub
 
     Public Sub ProgBarInitialize()
+        ' ##Sets progress bar paramters according to selected options.##
         If frmOptions.chkbxBackCount.Checked = False Then
             barOpt2.Minimum = 0
             barOpt2.Maximum = CInt(frmOptions.txtbxOptionsBarValue.Text)
@@ -531,19 +598,25 @@ Public Class frmMatching2Opt
             barOpt2.Value = barOpt2.Maximum
         End If
 
+        ' Make bar visible.
         barOpt2.Visible = True
     End Sub
 
     Private Sub Condition4()
+        ' ##Randomly selects a condition of options 1-3 to implement on condition 4.
 
+        ' Set condition to value of 4.
         intCondition = 4
 
+        ' If not progressing sequentially, removes condition 4 from list.
         If frmOptions.chkbxOptionsRandom.Checked = True Then
             lstCondition.Remove("4")
         End If
 
+        ' Create a random variable set to value 1-3
         Dim varCond As Integer = CInt(Math.Floor(3 * Rnd())) + 1
 
+        ' If schedules are manually set, do so according to random variable selected (above).
         If frmOptions.rdioOptionsManSched.Checked = True Then
             If varCond = 1 Then
                 intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedAMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedAMin.Text)
@@ -555,6 +628,7 @@ Public Class frmMatching2Opt
                 intRandA = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) + CInt(frmOptions.txtOptSchedBMin.Text)
                 intRandB = CInt(Math.Floor(((CInt(frmOptions.txtOptSchedAMax.Text)) - (CInt(frmOptions.txtOptSchedBMin.Text)) + 1) * Rnd())) * CInt(frmOptions.txtOptSchedBMin.Text)
             End If
+            ' If schedules are automatically generated, create values and populate lists for A and B according to random variable selected (above).
         ElseIf frmOptions.rdioOptionsAutoSched.Checked = True Then
             viListA.Clear()
             viListB.Clear()
@@ -619,4 +693,10 @@ Public Class frmMatching2Opt
         End If
     End Sub
 
+    Private Sub frmMatching2Opt_Move(sender As Object, e As EventArgs) Handles Me.Move
+        ' If the log from is visible, set location to left side of session form.
+        If frmOpt2Log.Visible = True Then
+            frmOpt2Log.Location = New Point(Me.Left - frmOpt2Log.Width, Me.Top)
+        End If
+    End Sub
 End Class

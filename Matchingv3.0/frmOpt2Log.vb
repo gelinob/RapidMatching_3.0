@@ -30,6 +30,7 @@
     End Sub
 
     Public Sub Misses()
+        ' Record the number of clicks not allocated to response option or other functional component.
         txtMissOptA2Opt.Text = frmMatching2Opt.missCountA
         txtMissOptB2Opt.Text = frmMatching2Opt.missCountB
     End Sub

@@ -1,5 +1,6 @@
 ﻿Public Class frmSchedules
     Private Sub btnOK_Click(sender As Object, e As EventArgs) Handles btnOK.Click
+        ' ##All code on this page is intended to verify that values are numeric and greater than zero before saving and closing the page.
         CheckA()
     End Sub
 

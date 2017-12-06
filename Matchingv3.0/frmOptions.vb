@@ -1,5 +1,6 @@
 ﻿Public Class frmOptions
     Private Sub rdioOptionsAutoSched_CheckedChanged(sender As Object, e As EventArgs) Handles rdioOptionsAutoSched.CheckedChanged
+        ' Display further options for automatic schedules, if selected.
         If grpOptionsManSched.Visible = True Then
             grpOptionsManSched.Hide()
             btnSchedules.Show()
@@ -7,6 +8,7 @@
     End Sub
 
     Private Sub rdioOptionsManSched_CheckedChanged(sender As Object, e As EventArgs) Handles rdioOptionsManSched.CheckedChanged
+        ' Display further options for manual schedules, if selected.
         If btnSchedules.Visible = True Then
             btnSchedules.Hide()
             grpOptionsManSched.Show()
@@ -69,6 +71,7 @@
     End Sub
 
     Private Sub frmOptions_Load(sender As Object, e As EventArgs) Handles Me.Load
+        ' Display options for automatic or manual schedule, depending on which is selected.
         If rdioOptionsAutoSched.Checked = True Then
             btnSchedules.Show()
             grpOptionsManSched.Hide()
@@ -79,6 +82,7 @@
     End Sub
 
     Private Sub btnSchedules_Click(sender As Object, e As EventArgs) Handles btnSchedules.Click
+        ' Show schedules form.
         frmSchedules.ShowDialog()
 
     End Sub

@@ -25,11 +25,6 @@ Partial Class frmOptions
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOptions))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pgeMatching2Opt = New System.Windows.Forms.TabPage()
-        Me.chkbxOptionsRandom = New System.Windows.Forms.CheckBox()
-        Me.chkbxSchedChange = New System.Windows.Forms.CheckBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.rdioOptionsManSched = New System.Windows.Forms.RadioButton()
-        Me.rdioOptionsAutoSched = New System.Windows.Forms.RadioButton()
         Me.grpOptionsManSched = New System.Windows.Forms.GroupBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lblOptMin = New System.Windows.Forms.Label()
@@ -45,16 +40,21 @@ Partial Class frmOptions
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblSchedA = New System.Windows.Forms.Label()
+        Me.chkbxOptionsRandom = New System.Windows.Forms.CheckBox()
+        Me.chkbxSchedChange = New System.Windows.Forms.CheckBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.rdioOptionsManSched = New System.Windows.Forms.RadioButton()
+        Me.rdioOptionsAutoSched = New System.Windows.Forms.RadioButton()
+        Me.btnSchedules = New System.Windows.Forms.Button()
         Me.pgeProgBar = New System.Windows.Forms.TabPage()
         Me.chkbxBackCount = New System.Windows.Forms.CheckBox()
         Me.txtbxOptionsBarValue = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnOptionsOK = New System.Windows.Forms.Button()
-        Me.btnSchedules = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.pgeMatching2Opt.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         Me.grpOptionsManSched.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.pgeProgBar.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -82,59 +82,6 @@ Partial Class frmOptions
         Me.pgeMatching2Opt.TabIndex = 0
         Me.pgeMatching2Opt.Text = "Schedules"
         Me.pgeMatching2Opt.UseVisualStyleBackColor = True
-        '
-        'chkbxOptionsRandom
-        '
-        Me.chkbxOptionsRandom.AutoSize = True
-        Me.chkbxOptionsRandom.Location = New System.Drawing.Point(12, 34)
-        Me.chkbxOptionsRandom.Name = "chkbxOptionsRandom"
-        Me.chkbxOptionsRandom.Size = New System.Drawing.Size(141, 17)
-        Me.chkbxOptionsRandom.TabIndex = 9
-        Me.chkbxOptionsRandom.Text = "Randomize Phase Order"
-        Me.chkbxOptionsRandom.UseVisualStyleBackColor = True
-        '
-        'chkbxSchedChange
-        '
-        Me.chkbxSchedChange.AutoSize = True
-        Me.chkbxSchedChange.Location = New System.Drawing.Point(12, 13)
-        Me.chkbxSchedChange.Name = "chkbxSchedChange"
-        Me.chkbxSchedChange.Size = New System.Drawing.Size(142, 17)
-        Me.chkbxSchedChange.TabIndex = 8
-        Me.chkbxSchedChange.Text = "Variable Phase Changes"
-        Me.chkbxSchedChange.UseVisualStyleBackColor = True
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.rdioOptionsManSched)
-        Me.GroupBox2.Controls.Add(Me.rdioOptionsAutoSched)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 63)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(220, 69)
-        Me.GroupBox2.TabIndex = 0
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Schedule Values"
-        '
-        'rdioOptionsManSched
-        '
-        Me.rdioOptionsManSched.AutoSize = True
-        Me.rdioOptionsManSched.Location = New System.Drawing.Point(7, 44)
-        Me.rdioOptionsManSched.Name = "rdioOptionsManSched"
-        Me.rdioOptionsManSched.Size = New System.Drawing.Size(140, 17)
-        Me.rdioOptionsManSched.TabIndex = 1
-        Me.rdioOptionsManSched.Text = "Set Constraints (Manual)"
-        Me.rdioOptionsManSched.UseVisualStyleBackColor = True
-        '
-        'rdioOptionsAutoSched
-        '
-        Me.rdioOptionsAutoSched.AutoSize = True
-        Me.rdioOptionsAutoSched.Checked = True
-        Me.rdioOptionsAutoSched.Location = New System.Drawing.Point(6, 21)
-        Me.rdioOptionsAutoSched.Name = "rdioOptionsAutoSched"
-        Me.rdioOptionsAutoSched.Size = New System.Drawing.Size(123, 17)
-        Me.rdioOptionsAutoSched.TabIndex = 0
-        Me.rdioOptionsAutoSched.TabStop = True
-        Me.rdioOptionsAutoSched.Text = "Algorithm Generation"
-        Me.rdioOptionsAutoSched.UseVisualStyleBackColor = True
         '
         'grpOptionsManSched
         '
@@ -285,6 +232,68 @@ Partial Class frmOptions
         Me.lblSchedA.TabIndex = 2
         Me.lblSchedA.Text = "Schedule A:"
         '
+        'chkbxOptionsRandom
+        '
+        Me.chkbxOptionsRandom.AutoSize = True
+        Me.chkbxOptionsRandom.Location = New System.Drawing.Point(12, 34)
+        Me.chkbxOptionsRandom.Name = "chkbxOptionsRandom"
+        Me.chkbxOptionsRandom.Size = New System.Drawing.Size(141, 17)
+        Me.chkbxOptionsRandom.TabIndex = 9
+        Me.chkbxOptionsRandom.Text = "Randomize Phase Order"
+        Me.chkbxOptionsRandom.UseVisualStyleBackColor = True
+        '
+        'chkbxSchedChange
+        '
+        Me.chkbxSchedChange.AutoSize = True
+        Me.chkbxSchedChange.Location = New System.Drawing.Point(12, 13)
+        Me.chkbxSchedChange.Name = "chkbxSchedChange"
+        Me.chkbxSchedChange.Size = New System.Drawing.Size(142, 17)
+        Me.chkbxSchedChange.TabIndex = 8
+        Me.chkbxSchedChange.Text = "Variable Phase Changes"
+        Me.chkbxSchedChange.UseVisualStyleBackColor = True
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.rdioOptionsManSched)
+        Me.GroupBox2.Controls.Add(Me.rdioOptionsAutoSched)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 63)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(220, 69)
+        Me.GroupBox2.TabIndex = 0
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Schedule Values"
+        '
+        'rdioOptionsManSched
+        '
+        Me.rdioOptionsManSched.AutoSize = True
+        Me.rdioOptionsManSched.Location = New System.Drawing.Point(7, 44)
+        Me.rdioOptionsManSched.Name = "rdioOptionsManSched"
+        Me.rdioOptionsManSched.Size = New System.Drawing.Size(140, 17)
+        Me.rdioOptionsManSched.TabIndex = 1
+        Me.rdioOptionsManSched.Text = "Set Constraints (Manual)"
+        Me.rdioOptionsManSched.UseVisualStyleBackColor = True
+        '
+        'rdioOptionsAutoSched
+        '
+        Me.rdioOptionsAutoSched.AutoSize = True
+        Me.rdioOptionsAutoSched.Checked = True
+        Me.rdioOptionsAutoSched.Location = New System.Drawing.Point(6, 21)
+        Me.rdioOptionsAutoSched.Name = "rdioOptionsAutoSched"
+        Me.rdioOptionsAutoSched.Size = New System.Drawing.Size(123, 17)
+        Me.rdioOptionsAutoSched.TabIndex = 0
+        Me.rdioOptionsAutoSched.TabStop = True
+        Me.rdioOptionsAutoSched.Text = "Algorithm Generation"
+        Me.rdioOptionsAutoSched.UseVisualStyleBackColor = True
+        '
+        'btnSchedules
+        '
+        Me.btnSchedules.Location = New System.Drawing.Point(79, 142)
+        Me.btnSchedules.Name = "btnSchedules"
+        Me.btnSchedules.Size = New System.Drawing.Size(75, 35)
+        Me.btnSchedules.TabIndex = 16
+        Me.btnSchedules.Text = "Edit Schedules"
+        Me.btnSchedules.UseVisualStyleBackColor = True
+        '
         'pgeProgBar
         '
         Me.pgeProgBar.Controls.Add(Me.chkbxBackCount)
@@ -334,15 +343,6 @@ Partial Class frmOptions
         Me.btnOptionsOK.Text = "OK"
         Me.btnOptionsOK.UseVisualStyleBackColor = True
         '
-        'btnSchedules
-        '
-        Me.btnSchedules.Location = New System.Drawing.Point(79, 142)
-        Me.btnSchedules.Name = "btnSchedules"
-        Me.btnSchedules.Size = New System.Drawing.Size(75, 35)
-        Me.btnSchedules.TabIndex = 16
-        Me.btnSchedules.Text = "Edit Schedules"
-        Me.btnSchedules.UseVisualStyleBackColor = True
-        '
         'frmOptions
         '
         Me.AcceptButton = Me.btnOptionsOK
@@ -361,10 +361,10 @@ Partial Class frmOptions
         Me.TabControl1.ResumeLayout(False)
         Me.pgeMatching2Opt.ResumeLayout(False)
         Me.pgeMatching2Opt.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.grpOptionsManSched.ResumeLayout(False)
         Me.grpOptionsManSched.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.pgeProgBar.ResumeLayout(False)
         Me.pgeProgBar.PerformLayout()
         Me.ResumeLayout(False)
